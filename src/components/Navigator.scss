@@ -30,11 +30,16 @@
             position: absolute;
             padding: 0;
             .menu {
-                width: 205px;
+                width: 100%;
                 padding: 0 15px;
                 height: 35px;
                 line-height: 35px;
                 text-transform: none;
+                &.active {
+                    font-weight: 500;
+                    color: gold;
+                }
+            
                 .menu-link {
                     text-decoration: none;
                     color: $text-in-light;

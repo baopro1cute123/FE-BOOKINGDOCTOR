@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
+import Header from '../containers/Header/Header';
+import ManageDoctor from '../containers/System/Admin/ManageDoctor';
+import UserRedux from '../containers/System/Admin/UserRedux';
 import UserManage from '../containers/System/UserManage';
-import ProductManage from '../containers/System/ProductManage';
-import RegisterPackageGroupOrAcc from '../containers/System/RegisterPackageGroupOrAcc';
 
 class System extends Component {
     render() {
-        const { systemMenuPath } = this.props;
+
+        const { systemMenuPath, isLoggedIn } = this.props;
         return (
+            <>
+            {isLoggedIn && <Header />}
+
             <div className="system-container">
                 <div className="system-list">
                     <Switch>
                         <Route path="/system/user-manage" component={UserManage} />
-                        <Route path="/system/product-manage" component={ProductManage} />
-                        <Route path="/system/register-package-group-or-account" component={RegisterPackageGroupOrAcc} />
+                        <Route path="/system/user-redux" component={UserRedux} />
+                        <Route path="/system/manage-doctor" component={ManageDoctor} />
                         <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                     </Switch>
                 </div>
             </div>
+            </>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        systemMenuPath: state.app.systemMenuPath
+        systemMenuPath: state.app.systemMenuPath,
+        isLoggedIn: state.user.isLoggedIn
+
     };
 };
 

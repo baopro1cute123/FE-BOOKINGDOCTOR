@@ -1,0 +1,249 @@
+.slick-prev {
+    left: -10px !important;
+    z-index: 1000 !important;
+    height: 48px !important;
+    width: 44px !important;
+    background: #fff !important;
+    border: 2px solid #49bce2 !important;
+
+    &:hover{
+        background: #eeeaea !important;
+    }
+}
+.slick-prev:before, .slick-next:before {
+    font-family: "Font Awesome 5 Free";
+    color: #49bce2 !important;
+
+ }
+.slick-next {
+    right: -10px !important;
+    z-index: 1000 !important;
+    height: 48px !important;
+    width: 44px !important;
+    background: #fff !important;
+    border: 2px solid #49bce2 !important;
+    
+    &:hover{
+        background: #eeeaea !important;
+    }
+}
+.slick-disabled {
+    display: none !important;
+}
+
+.section-share{
+
+    &.section-specialty{
+        background: #f5f5f5;
+
+    }
+
+    &.section-outstanding-doctor
+    {
+        background: #f5f5f5;
+
+    }
+    &.section-about{
+        height: 500px !important;
+        border-top: 1px solid #f5f5f5;
+        border-bottom: 1px solid #f5f5f5;
+
+    }
+
+
+
+    .section-body{
+
+        .section-customize{
+            margin-left: 20px;
+
+            .bg-image{
+               
+                background-position: center center;
+                background-repeat: no-repeat ;
+                background-size: cover;
+                background-color: #eee;
+
+                &.section-specialty{
+                    width: 278px;
+                    height: 150px;
+                    background-image: url(../../assets/specialty/coxuongkhop.jpg);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+                }
+                &.section-medical-facility{
+                    width: 278px;
+                    height: 150px;
+                    background-image: url(../../assets/MedicalFacility/MedicalFacility.jpg);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+
+
+                }
+                &.section-outstanding-doctor{
+                    width: 120px;
+                    height: 120px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+                    border-radius: 50%;
+                    // background-image: url(../../assets/doctor/doctor.jpg);
+                    
+                }
+                &.section-handbook{
+                    width: 278px;
+                    height: 150px;
+                    background-image: url(../../assets/handbook/123219bac-si-tieu-hoa-gioi.jpg);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eee;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+.section-share{
+    height: 330px;
+    .section-container{
+        margin: 0 100px;
+        display: flex;
+        flex-direction: column;
+
+        .speciatly-header{
+            height: 60px;
+            margin-bottom: 30px;
+            padding-top: 30px;
+
+            .title-section{
+                font-size: 22px;
+                font-weight: 600;
+            }
+            .btn-section{
+                float: right;
+                padding: 10px 15px;
+                border: none;
+                outline: none;
+                display: block;
+                background: #ebebeb;
+                color: black;
+                cursor: pointer;
+                text-transform: uppercase;
+                &:hover{
+                    color: #fff;
+                    background: #f7d800;
+                }
+            }
+        }
+        
+        
+    }
+
+}
+
+.section-outstanding-doctor{
+
+    .outder-bg{
+        display: flex;
+        justify-content: center;
+        
+    }
+    .section-customize{
+        cursor: pointer;
+        padding: 5px;
+        .customize-border{
+            padding: 20px;
+        }
+    }
+    
+}
+
+.footer{
+.home-footer-up{
+    text-align: center;
+    padding-top: 8px;
+    background-color: #49bce2;  
+    .home-footer-container{
+        i{
+            height: 30px;
+            width: 30px;
+        }
+    }
+}
+.home-footer {
+    padding-top: 8px;
+    background-color: #ebebeb;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    a{
+        text-decoration: unset;
+    }
+    .home-footer-p {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+    }
+    .home-footer-content{
+        flex: 1;
+        margin-left: 140px;
+
+        span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+    }
+    .home-footer-content:last-child {
+        margin-right: 0;
+    }
+    .home-footer a:hover {
+        text-decoration: underline;
+    }
+
+}
+
+}
+.section-about {
+    padding: 0 100px;
+    .section-about-header{
+        padding: 20px 10px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+    .section-about-content{
+        display: flex;
+        gap: 15px;
+        width: 100%;
+
+        .content-left{
+            width: 60%;
+        }
+        .content-right{
+            width: 40%;
+            p{
+                text-align: center;
+                font-style: italic;
+                justify-content: center;
+                padding-top: 45px;
+            }
+        }
+    }
+}
+
