@@ -1,17 +1,42 @@
 import 'moment/locale/vi'; // Import locale vi
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import './verifyEmail.scss';
+import { postVerifyBookAppointment } from '../../services/userService';
+import HomeHeader from '../HomePage/HomeHeader';
+import './verifyEmail.scss';
+
 class verifyEmail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           
+           statusVerify: false,
+           errorCode : 0
         }
     }
     async componentDidMount () {
+        
+        if(this.props.location && this.props.location.search) {
+            let urlParams = new URLSearchParams(this.props.location.search);
+            let token = urlParams.get('token');
+            let doctorId = urlParams.get('doctorId')
 
-
+            let res = await postVerifyBookAppointment({
+                token: token,
+                doctorId: doctorId
+            })
+            if(res && res.errCode === 0) {
+                this.setState({
+                    statusVerify: true,
+                    errorCode : res.errCode
+                })
+            }else{
+                this.setState({
+                    statusVerify : true,
+                    errorCode: res.errCode ? res.errCode : -1
+                })
+            }
+        }
+        
     }
 
 
@@ -23,10 +48,23 @@ class verifyEmail extends Component {
         
 }
     render() {
-        
+        let {statusVerify, errorCode} = this.state
         return (
             <>
-            Hello world from verify email compoment
+            <HomeHeader/>
+            <div className='verify-container'>
+            {statusVerify === false ?
+                <div>
+                    Loading data...
+                </div> :
+                <div >
+                    {+errorCode === 0 ?
+                        <div className='infor-booking'>XÁC NHẬN LỊCH HẸN THÀNH CÔNG !</div> : 
+                        <div className='infor-booking'>LỊCH HẸN KHÔNG TỒN TẠI HOẶC ĐÃ ĐƯỢC XÁC NHẬN </div>
+                    }
+                </div>
+            }
+            </div>
             </>
                     
                         

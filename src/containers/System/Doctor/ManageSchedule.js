@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-
 import { connect } from "react-redux";
 import Select from 'react-select';
 import { toast } from 'react-toastify';

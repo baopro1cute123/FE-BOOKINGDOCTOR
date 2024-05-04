@@ -1,47 +1,60 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { getAllSpecialtyService } from '../../../services/userService';
 
 class Specialty extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataSpecialty : []
+        
+        }
+    }
+    async componentDidMount () {
+        let res = await getAllSpecialtyService()
+        if(res && res.errCode === 0){
+            this.setState({
+                dataSpecialty: res.data ? res.data : []
+            })
+        }
 
- 
+    }
+    handleViewDetailDoctor = (item) => {
+        this.props.history.push(`/detail-specialty/${item.id}`)
+    }
     render() {
-
+        let {dataSpecialty} = this.state
         return (
             <div className='section-specialty section-share'>
                 <div className='section-container'>
                     <div className='speciatly-header'>
-                        <span className='title-section'>Chuyên Khoa phổ biến</span>
-                        <button className='btn-section'>Xem thêm</button>
+                        <span className='title-section'>
+                            <FormattedMessage id="homePage.speciality-poplular"/>
+                        </span>
+                        <button className='btn-section'>
+                        <FormattedMessage id="homePage.more-infor"/>
+                        </button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
-                        <div className='section-customize'>
-                            <div className='bg-image section-specialty' />
-                            <div >Cơ xương khớp 1</div>
-                        </div>
-                        <div className='section-customize'>
-                        <div className='bg-image section-specialty' />
-                            <div>Cơ xương khớp 2</div>
-                        </div>
-                        <div className='section-customize'>
-                        <div className='bg-image section-specialty' />
-                            <div>Cơ xương khớp 3</div>
-                        </div>
-                        <div className='section-customize'>
-                        <div className='bg-image section-specialty' />
-                            <div>Cơ xương khớp 4</div>
-                        </div>
-                        <div className='section-customize'>
-                        <div className='bg-image section-specialty' />
-                            <div>Cơ xương khớp 5</div>
-                        </div>
-                        <div className='section-customize'>
-                        <div className='bg-image section-specialty' />
-                            <div>Cơ xương khớp 6</div>
-                        </div>
+                        {dataSpecialty && dataSpecialty.length > 0 && 
+                    dataSpecialty.map((item, index)=>{
+                        return(
+                            <div className='section-customize specialty-child' key={index}
+                                onClick={()=> this.handleViewDetailDoctor(item)}>
+                                <div className='bg-image section-specialty' 
+                                    style={{backgroundImage: `url(${item.image})`}}/>
+                                <div className='specialty-name' >{item.name}</div>
+                            </div>
+                        )
+                    })
+                }
+                        
                         
                         </Slider>
                     </div>
@@ -66,4 +79,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Specialty));

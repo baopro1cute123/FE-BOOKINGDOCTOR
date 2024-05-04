@@ -53,7 +53,15 @@
 
 
     .section-body{
-
+        .specialty-child{
+            cursor: pointer;
+            .specialty-name{
+                padding: 10px 0;
+                &:hover{
+                    color: #49bce2
+                }
+            }
+        }
         .section-customize{
             margin-left: 20px;
 
@@ -67,7 +75,7 @@
                 &.section-specialty{
                     width: 278px;
                     height: 150px;
-                    background-image: url(../../assets/specialty/coxuongkhop.jpg);
+                    // background-image: url(../../assets/specialty/coxuongkhop.jpg);
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: cover;

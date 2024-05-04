@@ -10,12 +10,20 @@ class DoctorExtraifor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isShowDetaiInfor : true,
+            isShowDetaiInfor : false,
             extraInfor : {},
         }
     }
-    componentDidMount () {
+    async componentDidMount () {
+        if(this.props.detailIdFromParent){
 
+        let res = await getExtraInforDoctorById(this.props.detailIdFromParent)
+        if(res && res.errCode === 0 ){
+            this.setState({
+                extraInfor: res.data
+            })
+        }
+    }
 
     }
 

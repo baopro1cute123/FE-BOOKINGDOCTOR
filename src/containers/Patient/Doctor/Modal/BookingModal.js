@@ -148,7 +148,6 @@ class BookingModal extends Component {
             let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : ''
             return (
             <>
-                <div>Hello world </div>
                 <Modal 
                     isOpen={isOpenModal} 
                     className={'booking-modal-container'}
