@@ -40,10 +40,22 @@ class DetailSpecialty extends Component {
                         })
                     }
                 }
+
+                let dataProvince = resProvince.data
+                if (dataProvince && dataProvince.length > 0){
+                    dataProvince.unshift({
+                        createdAt: null,
+                        keyMap: 'ALL',
+                        type : "PROVINCE",
+                        valueEn: 'ALL',
+                        valueVi: "Toàn quốc",
+                    })
+                }
+
                 this.setState({
                     dataDetailSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
-                    listProvince: resProvince.data
+                    listProvince: dataProvince ? dataProvince : []
                 })
             }
         }
@@ -52,13 +64,40 @@ class DetailSpecialty extends Component {
   
     async componentDidUpdate( prevProps,prevState,snapshot){
        if(this.props.language !== prevProps.language ){
+        }
+        }
+
+  
+    handleOnChange = async (event) =>{ //hàm sort : dựa vào đây để viết hàm search
+        if(this.props.match && this.props.match.params && this.props.match.params.id){
+            let id = this.props.match.params.id
+            let location = event.target.value
+
+            let res = await getDetailSpecialtyByIdService({
+                id : id,
+                location: location
+            })
+
+            if(res && res.errCode === 0) {
+                let data = res.data
+                let arrDoctorId = []
+                if(data && !_.isEmpty(res.data)){
+                    let arr = data.doctorSpecialty;
+                    if(arr && arr.length > 0 ){
+                        arr.map(item => {
+                            arrDoctorId.push(item.doctorId)
+                        })
+                    }
+                }
+                this.setState({
+                    dataDetailSpecialty: res.data,
+                    arrDoctorId: arrDoctorId,
+                    
+                })
         
         }
-        
-}
-    handleOnChange = (event) =>{
-        console.log("check", event.target.value)
     }
+}
     render() {
         let {arrDoctorId, dataDetailSpecialty,listProvince} = this.state
         let {language}  = this.props
@@ -68,12 +107,12 @@ class DetailSpecialty extends Component {
             <HomeHeader/>
             <div className='detail-specialty-body'>
               
-            <div className='description-specialty'>
-            {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
-                    && 
-                    <div dangerouslySetInnerHTML={{__html: dataDetailSpecialty.descriptionHTML}}></div>  
-            }
-            </div>
+                <div className='description-specialty'>
+                {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
+                        && 
+                        <div dangerouslySetInnerHTML={{__html: dataDetailSpecialty.descriptionHTML}}></div>  
+                }
+                </div>
             
             <div className='search-sp-doctor'>
                 <select onChange={(event)=> this.handleOnChange(event)}>
@@ -103,6 +142,9 @@ class DetailSpecialty extends Component {
                                         <ProfileDoctor
                                             doctorId = {item}
                                             isShowDescriptionDoctor = {true}
+                                            isShowLinkDetail={true}
+                                            isShowPrice={false}
+
                                         // dataTime = {dataTime} 
                                         />
                                     </div>

@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import NumberFormat from 'react-number-format';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { getProfileDoctorById } from '../../../services/userService';
 import { LANGUAGE } from '../../../utils';
 import './ProfileDoctor.scss';
@@ -64,14 +65,16 @@ class ProfileDoctor extends Component {
     }
     render() {
         let {dataProfile} = this.state
-        let {language, isShowDescriptionDoctor, dataTime} = this.props
+
+        let {doctorId,language, isShowDescriptionDoctor, dataTime, isShowPrice, isShowLinkDetail } = this.props
         let nameVi = '';
         let nameEn = '';
         if (dataProfile && dataProfile.positionData){
             nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName}`;
             nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
 
-        }        return (
+        }
+        return (
             <>
             <div className='profile-doctor-container'>
                 <div className='intro-doctor'>
@@ -102,6 +105,11 @@ class ProfileDoctor extends Component {
                         </div>
                     </div>
                 </div>
+            {isShowLinkDetail === true && 
+            <div className='view-detail-doctor'
+            ><Link to={`/detail-doctor/${doctorId}`}>Xem thêm</Link>
+            </div>}
+            {isShowPrice === true &&
                 <div className='price'>
                 GIÁ KHÁM :
                 {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGE.VI ?
@@ -126,6 +134,7 @@ class ProfileDoctor extends Component {
                 }
 
                 </div>
+            }
             </div>
             </>
 
