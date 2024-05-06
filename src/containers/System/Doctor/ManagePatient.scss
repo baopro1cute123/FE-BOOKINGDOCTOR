@@ -1,0 +1,54 @@
+
+div._loading_overlay_wrapper{
+    position: unset;
+
+    ._loading_overlay_overlay{
+        z-index: 1000000000;
+    }
+}
+
+.manage-patient-container{
+
+    .m-p-title{
+        font-size: 20px;
+        margin: 10px 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .manage-patient-body{
+        padding: 0 20px;
+
+        .table-manage-patient{
+            button{
+                cursor: pointer;
+                border: none;
+                outline: none;
+            }
+            .mp-btn-confirm{
+                margin-right: 10px;
+                height: 30px;
+                border-radius: 3px;
+                background: orange;
+            }
+            .mp-btn-remedy{
+                height: 30px;
+                border-radius: 3px;
+                background: rgb(0, 204, 255);
+            }
+        }
+
+        .no-data {
+            display: flex;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-size: 30px;
+            text-transform: uppercase;
+            margin-top: 100px;
+            color: red;
+            font-weight: 600;
+        }
+        
+    }
+}

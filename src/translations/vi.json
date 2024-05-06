@@ -29,7 +29,7 @@
             "manage-doctor" : "Quản lý bác sĩ",
             "manage-admin" : "Quản lý Admin",
             "crud" : "CRUD user",
-            "crud-redux" : "CRUD REDUX",
+            "crud-redux" : "Quản lý người dùng",
             "clinic": "Phòng khám",
             "manage-clinic": "Quản lý phòng khám",
             "specialty": "Chuyên khoa",
@@ -39,7 +39,9 @@
 
         },
         "doctor" : {
-            "manage-schedule" : "Quản lý kế hoạch khám bệnh"
+            "manage-schedule" : "Quản lý kế hoạch khám bệnh",
+            "manage-patient" : "Quản lý bệnh nhân khám bệnh"
+
         }
     },
     "manage-user" : {

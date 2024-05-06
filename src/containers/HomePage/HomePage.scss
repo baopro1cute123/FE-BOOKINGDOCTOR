@@ -56,11 +56,19 @@
         .specialty-child{
             cursor: pointer;
             .specialty-name{
+                font-weight: 600;
                 padding: 10px 0;
                 &:hover{
                     color: #49bce2
                 }
             }
+        }
+        .clinic-name{
+            font-weight: 600;
+            padding: 10px 5px;
+                &:hover{
+                    color: #49bce2
+                }
         }
         .section-customize{
             margin-left: 20px;
@@ -82,9 +90,9 @@
                     background-color: #eee;
                 }
                 &.section-medical-facility{
-                    width: 278px;
+                    width: 300px;
                     height: 150px;
-                    background-image: url(../../assets/MedicalFacility/MedicalFacility.jpg);
+                    // background-image: url(../../assets/MedicalFacility/MedicalFacility.jpg);
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: cover;

@@ -22,7 +22,6 @@ export const adminMenu = [
             { //quản lý kế hoạch khám bệnh bác sĩ
                
                 name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
-                    
                 
             },
         
@@ -45,7 +44,7 @@ export const adminMenu = [
             }
         ]
     },
-    { //quản lý cẩm nang
+    { //quản lý cẩm nang đỏi qua lịch sử khám bệnh
         name: 'menu.admin.handbook', 
         menus: [
             {
@@ -61,6 +60,9 @@ export const doctorMenu = [
     menus : [
             {
                 name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
+            },
+            {
+                name: 'menu.doctor.manage-patient', link: '/doctor/manage-patient'
             }
         ]
 
