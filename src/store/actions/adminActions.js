@@ -70,7 +70,6 @@ export const fetchRoleStart =() => {
         try {
             let res = await getAllcodeService("ROLE");
 
-            console.log("check role", res.data)
 
             if(res && res.errCode === 0){
                 dispatch(fetchRoleSuccess(res.data));
@@ -101,7 +100,6 @@ export const createNewUser = (data) => {
     return async(dispatch, getState) => {
         try {
             let res = await createNewUserService(data);
-            console.log("check create", res)
             if(res && res.errCode === 0){
                 toast.success("Create a new user success!")
                 dispatch(saveUserSuccess());
@@ -133,7 +131,6 @@ export const fetchAllUserStart =() => {
         try {
             let res = await getAllUsers("ALL");
 
-            console.log("check role", res.data)
 
             if(res && res.errCode === 0){
                 dispatch(fetchAllUserSuccess(res.users.reverse()));
@@ -163,7 +160,6 @@ export const deleteAUser = (userId) => {
     return async(dispatch, getState) => {
         try {
             let res = await deleteUserService(userId.id);
-            console.log("check create", res)
             if(res && res.errCode === 0){
                 toast.success("Delete user success!")
                 dispatch(deleteUserSuccess());
@@ -195,7 +191,6 @@ export const editAUser = (data) => {
     return async(dispatch, getState) => {
         try {
             let res = await editUserService(data);
-            console.log("check create", res)
             if(res && res.errCode === 0){
                 toast.success("Update user success!")
                 dispatch(EditUserSuccess());
@@ -226,7 +221,6 @@ export const fetchTopDoctor = (data) => {
     return async(dispatch, getState) => {
         try {
             let res = await getTopDoctorHomeService("7")
-            console.log(res)
             if(res && res.errCode === 0){
                 dispatch({
                     type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
@@ -278,7 +272,6 @@ export const saveDetailDoctor = (data) => {
     return async(dispatch, getState) => {
         try {
             let res = await saveDetailDoctorService(data)
-            console.log("check", res)
             if(res && res.errCode === 0){
                 toast.success("Save success")
                 dispatch({

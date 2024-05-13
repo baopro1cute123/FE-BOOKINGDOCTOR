@@ -36,12 +36,18 @@
             "specialty": "Specialty",
             "manage-specialty": "Manage specialty",
             "handbook": "Handbook",
-            "manage-handbook": "Manage handbook"
-
+            "manage-handbook": "Manage handbook",
+            "doctor-patient": "Patient management",
+            "history-patient": "Medical history",
+            "history" : "Medical history",
+            "manage-history" : "Manage medical history",
+            "manage-all-history" : "Manage medical appointments"
         },
         "doctor" : {
             "manage-schedule" : "Manage Doctor's schedule",
-            "manage-patient" : "Manage Patient"
+            "manage-patient" : "Manage Patient",
+            "history-patient" : "Manage History Patient"
+
         }
     },
     "manage-user" : {

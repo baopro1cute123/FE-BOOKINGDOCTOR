@@ -45,10 +45,13 @@ export const adminMenu = [
         ]
     },
     { //quản lý cẩm nang đỏi qua lịch sử khám bệnh
-        name: 'menu.admin.handbook', 
+        name: 'menu.admin.history', 
         menus: [
             {
-                name: 'menu.admin.manage-handbook', link: '/system/manage-handbook'
+                name: 'menu.admin.manage-history', link: '/system/manage-history'
+            },
+            {
+                name: 'menu.admin.manage-all-history', link: '/system/manage-all-history'
             }
         ]
     },
@@ -60,9 +63,25 @@ export const doctorMenu = [
     menus : [
             {
                 name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
-            },
+            }
+        ]
+},
+{
+    name: 'menu.admin.doctor-patient',
+    menus : [
+          
             {
                 name: 'menu.doctor.manage-patient', link: '/doctor/manage-patient'
+            }
+        ]
+
+},
+{
+    name: 'menu.admin.history-patient',
+    menus : [
+          
+            {
+                name: 'menu.doctor.history-patient', link: '/doctor/history-patient'
             }
         ]
 

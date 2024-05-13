@@ -5,7 +5,7 @@ import LoadingOverlay from 'react-loading-overlay';
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
 import DatePicker from '../../../components/Input/DatePicker';
-import { PostSendRemedy, getAllPatientForDoctor } from '../../../services/userService';
+import { PostCancle, PostSendRemedy, getAllPatientForDoctor } from '../../../services/userService';
 import { LANGUAGE } from '../../../utils';
 import './ManagePatient.scss';
 import RemedyModal from './RemedyModal';
@@ -56,18 +56,48 @@ class ManagePatient extends Component {
         })
     }
     handleConfirm = (item) => {
+        let date = new Date(parseInt(item.date)).toLocaleDateString()
 
         let data = {
             doctorId : item.doctorId,
             patientId : item.patientId,
             email: item.patientData.email,
             timeType: item.timeType,
-            patientName : item.patientData.firstName
+            patientName : item.patientData.firstName,
+            patientDate : item.date,
+            emailDate: date
         }
         this.setState({
             isOpenRemedyModal: true,
             dataModal: data
         })
+    }
+    handleCancle = async (item) => {
+        let date = new Date(parseInt(item.date)).toLocaleDateString()
+
+        let res = await PostCancle({
+            email:item.patientData.email,
+            doctorId : item.doctorId,
+            patientId : item.patientId,
+            timeType :item.timeType,
+            language: this.props.language,
+            patientName : item.patientData.firstName,
+            patientDate: date
+        })
+        if(res && res.errCode === 0) {
+            this.setState({
+                isShowLoading: false
+            })
+            toast.success("Send success!")
+            this.closeRemedyModal()
+            await this.getDataPatient()
+        }else{
+            this.setState({
+                isShowLoading: true
+            })
+            toast.error("Error !")
+        }
+
     }
     closeRemedyModal= () => {
         this.setState({
@@ -85,12 +115,15 @@ class ManagePatient extends Component {
         let res = await PostSendRemedy({
             email: dataFromModal.email,
             imgBase64 : dataFromModal.imgBase64,
+            reason : dataFromModal.reason,
             doctorId : dataModal.doctorId,
             patientId : dataModal.patientId,
             timeType :dataModal.timeType,
             language: this.props.language,
-            patientName : dataModal.patientName
-
+            patientName : dataModal.patientName,
+            patientDate: dataModal.patientDate,
+            emailDate : dataModal.emailDate
+            // thêm vào đây
         })
         if(res && res.errCode === 0) {
             this.setState({
@@ -109,7 +142,7 @@ class ManagePatient extends Component {
     render() {
         let {dataPatient, isOpenRemedyModal, dataModal} = this.state
         let {language}= this.props
-        console.log(dataPatient)
+        
         return (
             <>  <LoadingOverlay
             active={this.state.isShowLoading}
@@ -162,6 +195,9 @@ class ManagePatient extends Component {
                                         <button className='mp-btn-confirm'
                                         onClick={()=> this.handleConfirm(item)}
                                         >Xác nhận</button>
+                                         <button className='mp-btn-delete'
+                                        onClick={()=> this.handleCancle(item)}
+                                        >Hủy lịch</button>
                                     </td>
                                 </tr>
                             )

@@ -27,7 +27,6 @@ class ModalEditUser extends Component {
                 address: user.address,
             })
         }
-        console.log("check",this.props.currentUser)
     }
 
     toggle = () => {

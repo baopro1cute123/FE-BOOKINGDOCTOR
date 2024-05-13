@@ -1,0 +1,65 @@
+.manage-history-container{
+    
+    padding: 50px 100px;
+
+    .manage-history-title {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: red;
+    }
+    .manage-history-table{
+        padding: 50px 0;
+
+
+        .btn-view{
+            background-color: aqua;
+        }
+    }
+}
+
+.history-modal-container {
+    .modal-header{
+        .modal-title{
+            text-transform: uppercase;
+            color: rgb(128, 0, 255);
+            font-size: 20px;
+            font-weight: 600;
+        }
+      
+    }
+    .body-modal-history{
+        p{  
+            font-size: 15px;
+            text-transform:inherit;
+            span {
+                color: black;
+                font-weight: 600;
+            }
+        }
+        .bg-image{
+            background-position: center center;
+            background-repeat: no-repeat ;
+            background-size: cover;
+            background-color: #eee;
+
+            &.section-history{
+                width: 470px;
+                height: 300px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #eee;
+            }
+        }
+    }
+
+
+
+
+}
+
+    
+
+

@@ -8,7 +8,7 @@ div._loading_overlay_wrapper{
 }
 
 .manage-patient-container{
-
+    padding: 0 200px;
     .m-p-title{
         font-size: 20px;
         margin: 10px 0;
@@ -31,6 +31,18 @@ div._loading_overlay_wrapper{
                 height: 30px;
                 border-radius: 3px;
                 background: orange;
+                color: white;
+                width: 100px;
+
+            }
+            .mp-btn-delete{
+                margin-right: 10px;
+                height: 30px;
+                border-radius: 3px;
+                background: red;
+                color: white;
+                width: 100px;
+
             }
             .mp-btn-remedy{
                 height: 30px;

@@ -11,6 +11,7 @@ class RemedyModal extends Component {
         this.state = {
             email : '',
             imgBase64: '',
+            reason: '',
         }
     }
     async componentDidMount () {
@@ -26,7 +27,8 @@ class RemedyModal extends Component {
     async componentDidUpdate( prevProps,prevState,snapshot){
         if(this.props.dataModal !== prevProps.dataModal ){
             this.setState({
-                email: this.props.dataModal.email
+                email: this.props.dataModal.email,
+
             })
         }
         
@@ -36,6 +38,12 @@ class RemedyModal extends Component {
         this.setState({
             email: event.target.value
         })
+    }
+    handleOnChangeReason = (event) => {
+        this.setState({
+            reason: event.target.value
+        })
+
     }
 
     handleOnchangeImg = async (event) => {
@@ -76,11 +84,19 @@ class RemedyModal extends Component {
                                             onChange={(event)=>this.handleOnChangeEmail(event)}
                                         />
                                 </div>
+                               
 
                                 <div className='col-6 form-group'>
                                         <label >Chọn file đơn thuốc</label>
                                         <input className='form-control-file' type='file'
                                             onChange={(event)=> this.handleOnchangeImg(event)}
+                                        />
+                                </div>
+
+                                <div className='col-12 form-group'>
+                                        <label >Bệnh nhận bị bệnh</label>
+                                        <input className='form-control' type='text' value={this.state.reason}
+                                            onChange={(event)=>this.handleOnChangeReason(event)}
                                         />
                                 </div>
                                 

@@ -35,12 +35,19 @@
             "specialty": "Chuyên khoa",
             "manage-specialty": "Quản lý chuyên khoa",
             "handbook": "Cẩm nang",
-            "manage-handbook": "Quản lý cẩm nang"
+            "manage-handbook": "Quản lý cẩm nang",
+            "doctor-patient": "Quản lý bệnh nhân",
+            "history-patient": "Lịch sử khám bệnh",
+            "history" : "Quản lý khám bệnh",
+            "manage-history" : "Quản lý lịch sử khám bệnh",            
+            "manage-all-history" : "Quản lý lịch hẹn khám bệnh"
+
 
         },
         "doctor" : {
             "manage-schedule" : "Quản lý kế hoạch khám bệnh",
-            "manage-patient" : "Quản lý bệnh nhân khám bệnh"
+            "manage-patient" : "Quản lý bệnh nhân khám bệnh",
+            "history-patient" : "Quản lý lịch sử khám bệnh"
 
         }
     },

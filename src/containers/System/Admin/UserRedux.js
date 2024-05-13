@@ -118,7 +118,6 @@ class UserRedux extends Component {
         let {action} = this.state ;
 
         if(action === CRUD_ACTIONS.CREATE) {
-            console.log(this.state.avatar)
             this.props.createNewUser({
                 email: this.state.email,
                 password: this.state.password,
@@ -179,8 +178,6 @@ class UserRedux extends Component {
         if(user.image){
            imageBase64 = new Buffer (user.image, 'base64').toString('binary')
         }
-    
-
         this.setState({
             email : user.email,
             password : "HARDCODE",
@@ -354,8 +351,6 @@ class UserRedux extends Component {
                             {this.state.action === CRUD_ACTIONS.EDIT ? 
                                 <FormattedMessage id="manage-user.edit"/> : 
                                 <FormattedMessage id="manage-user.save"/>
-
-                            
                             }
                             </button>
 

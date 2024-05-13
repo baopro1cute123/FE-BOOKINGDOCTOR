@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import './TableManageUser.scss';
-
 import MarkdownIt from 'markdown-it';
 import 'react-markdown-editor-lite/lib/index.css';
 
@@ -10,7 +9,6 @@ import 'react-markdown-editor-lite/lib/index.css';
 const mdParser = new MarkdownIt();
 
 function handleEditorChange({ html, text }) {
-  console.log('handleEditorChange', html, text);
 }
 
 class TableManageUser extends Component {
@@ -41,7 +39,6 @@ class TableManageUser extends Component {
     }
     render() {
         let arrUsers = this.state.usersRedux
-        console.log(arrUsers)
         return (
                 <>
                 <table id="customers">

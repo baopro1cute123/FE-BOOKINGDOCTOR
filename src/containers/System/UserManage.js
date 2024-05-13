@@ -50,7 +50,6 @@ class UserManage extends Component {
     createNewUser = async (data) => {
         try {
            let response = await createNewUserService(data)
-            console.log("check response" ,response)
            if(response && response.errCode !==0){
                 alert(response.errMessage)
            }else{
@@ -60,10 +59,8 @@ class UserManage extends Component {
                 })
                 emitter.emit('EVENT_CLEAR_MODAL_DATA',{'id':'your id'})
            }
-           console.log(response)
 
         } catch (e) {
-            console.log(e)
         } 
 
     }
@@ -76,7 +73,6 @@ class UserManage extends Component {
             else{
                 alert(res.errMessage)
             }
-            console.log(res)
         } catch (e) {
             console.log(e)
         }

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import MdEditor from 'react-markdown-editor-lite';
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
-import { creteNewClinic, getAllClinicService } from "../../../services/userService";
+import { createNewClinic, deleteClinicService, getAllClinicService, updateClinicService } from "../../../services/userService";
 import { CommonUtils } from "../../../utils";
 import './ManageClinic.scss';
 
@@ -19,78 +19,117 @@ class ManageClinic extends Component {
             imageBase64: '',
             descriptionHTML: '',
             descriptionMarkdown: '',
+            action: '',
+            dataClinic: [],
+            clinicId : ''
         }
     }
-    async componentDidMount () {
-        let res = await getAllClinicService()
-        if(res && res.errCode === 0){
+    
+    async componentDidMount() {
+        await this.fetchClinics();
+    }
+
+    async componentDidUpdate(prevProps, prevState) {
+        if (this.props.language !== prevProps.language) {
+            // Handle language change if needed
+        }
+    }
+
+    fetchClinics = async () => {
+        let res = await getAllClinicService();
+        if (res && res.errCode === 0) {
             this.setState({
                 dataClinic: res.data ? res.data : []
-            })
-        }
-
-    }
-
-
-
-    async componentDidUpdate( prevProps,prevState,snapshot){
-    if(this.props.language !== prevProps.language ){
-        
+            });
         }
     }
+
     handleOnChangeInput = (event, id) => {
-        let stateCopy = {...this.state}
-        stateCopy[id] = event.target.value
-        this.setState({
-            ...stateCopy
-        })
-
+        let stateCopy = {...this.state};
+        stateCopy[id] = event.target.value;
+        this.setState({...stateCopy});
     }
+
     handleEditorChange = ({ html, text }) => {
         this.setState({
             descriptionHTML: html,
             descriptionMarkdown: text,
-            
-        })
+        });
     }
+
     handleOnchangeImg = async (event) => {
         let data = event.target.files;
         let file = data[0];
-        if(file) {
-            let base64 = await CommonUtils.getBase64(file)
-            this.setState({
-                imageBase64 : base64
-            })
+        if (file) {
+            let base64 = await CommonUtils.getBase64(file);
+            this.setState({imageBase64: base64});
         }
     }
-    handleSaveClinic =  async () => {
-        let res = await creteNewClinic(this.state)
-        if(res && res.errCode === 0) {
-            toast.success('Create success!')
+
+    handleSaveClinic = async () => {
+        const { action } = this.state;
+        if (action === 'EDIT') {
+            let res = await updateClinicService(this.state);
+            if (res && res.errCode === 0) {
+                toast.success('Update success!');
+                await this.fetchClinics();
+            }
+            else {
+                toast.error('Error Update');
+            }
+        }else{
+            let res = await createNewClinic(this.state);
+            if (res && res.errCode === 0) {
+                toast.success('Create success!');
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    descriptionHTML: '',
+                    descriptionMarkdown: '',
+                    address: '',
+                });
+                await this.fetchClinics();
+            } else {
+                toast.error('Error');
+            }
+        }
+            
+        
+    }
+
+    handleEditClinic = (item) => {
+        let imageBase64 = '';
+        if (item.image) {
+            imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+        }
+        this.setState({
+            name: item.name,
+            address: item.address,
+            descriptionMarkdown: item.descriptionMarkdown,
+            descriptionHTML: item.descriptionHTML,
+            imageBase64: imageBase64,
+            action: 'EDIT',
+            clinicId: item.id
+        });
+    }
+
+    handleDeleteClinic = async (item) => {
+        let res = await deleteClinicService(item.id);
+        if (res && res.errCode === 0) {
+            toast.success('Delete success!');
             this.setState({
                 name: '',
                 imageBase64: '',
                 descriptionHTML: '',
-                descriptionMarkdown : '',
+                descriptionMarkdown: '',
                 address: '',
-            })
-        }else{
-            toast.error('Error')
+            });
+            await this.fetchClinics();
         }
-        console.log("check", this.state)
-    }
-
-    handleEditUser = () => {
-
-    }
-
-    handleDeleteUser = () => {
-
     }
 
     render() {
         let {dataClinic} = this.state
-
         return (
             <>
             <div className='manage-specialty-container'>
@@ -149,10 +188,10 @@ class ManageClinic extends Component {
                                     <td>{item.address}</td>
                                     <td>
                                         <button className='btn-edit'
-                                        onClick={()=> this.handleEditUser(item)}
+                                        onClick={()=> this.handleEditClinic(item)}
                                         ><i className="fas fa-pencil-alt"></i></button>
                                         <button className='btn-delete'
-                                        onClick={()=> this.handleDeleteUser(item)}
+                                        onClick={()=> this.handleDeleteClinic(item)}
                                         ><i className="fas fa-trash"></i></button>
                                     </td> 
                                 </tr>

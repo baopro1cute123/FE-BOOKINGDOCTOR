@@ -13,21 +13,22 @@ import * as actions from '../../../../store/actions';
 import { LANGUAGE } from '../../../../utils';
 import ProfileDoctor from '../ProfileDoctor';
 import './BookingModal.scss';
+import LoadingOverlay from 'react-loading-overlay';
 class BookingModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           fullName : '',
-           phonenumber: '',
-           email: '',
-           address: '',
-           reason: '',
-           birthday: '',
-           doctorId: '',
-           selectedGender : '',
-           timeType: '',
-           genders : '',
-
+            fullName : '',
+            phonenumber: '',
+            email: '',
+            address: '',
+            reason: '',
+            birthday: '',
+            doctorId: '',
+            selectedGender : '',
+            timeType: '',
+            genders : '',
+            isShowLoading: false
         }
     }
     componentDidMount () {
@@ -91,6 +92,9 @@ class BookingModal extends Component {
 
     }
     handleConfirmBooking = async () => {
+        this.setState({
+            isShowLoading: true
+        })
 
         let date = new Date(this.state.birthday).getTime()
         let timeString = this.buildTimeBooking(this.props.dataTime)
@@ -111,6 +115,11 @@ class BookingModal extends Component {
             timeString: timeString,
             doctorName: doctorName,
         })
+
+        this.setState({
+            isShowLoading: false
+        })
+
         if(res && res.errCode === 0) {
             toast.success('Booking a new appointment success')
             this.props.closeBookingModal()
@@ -151,6 +160,11 @@ class BookingModal extends Component {
             let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : ''
             return (
             <>
+            <LoadingOverlay
+                active={this.state.isShowLoading}
+                spinner
+                text='loading...'
+            >
                 <Modal 
                     isOpen={isOpenModal} 
                     className={'booking-modal-container'}
@@ -261,6 +275,7 @@ class BookingModal extends Component {
                         </div>
                     </div>
                 </Modal>
+            </LoadingOverlay>
             </>
    
         );

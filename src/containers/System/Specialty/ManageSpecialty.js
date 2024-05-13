@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import MdEditor from 'react-markdown-editor-lite';
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
-import { creteNewSpecialty, getAllSpecialtyService } from "../../../services/userService";
+import { createNewSpecialty, deleteSpecialtyService, getAllSpecialtyService, updateSpecialtyService } from "../../../services/userService";
 import { CommonUtils } from "../../../utils";
 import './ManageSpecialty.scss';
 const mdParser = new MarkdownIt();
@@ -17,19 +17,23 @@ class ManageSpecialty extends Component {
             imageBase64: '',
             descriptionHTML: '',
             descriptionMarkdown: '',
+            action: '',
+            dataSpecialty: [],
+            specialtyId : ''
         }
     }
     async componentDidMount () {
-        let res = await getAllSpecialtyService()
-        if(res && res.errCode === 0){
-            this.setState({
-                dataSpecialty: res.data ? res.data : []
-            })
-        }
+        await this.fetchSpecialty();
 
     }
-
-
+    fetchSpecialty = async () => {
+        let res = await getAllSpecialtyService();
+        if (res && res.errCode === 0) {
+            this.setState({
+                dataSpecialty: res.data ? res.data : []
+            });
+        }
+    }
 
 
     async componentDidUpdate( prevProps,prevState,snapshot){
@@ -63,20 +67,66 @@ class ManageSpecialty extends Component {
         }
     }
     handleSaveSpecialty =  async () => {
-        let res = await creteNewSpecialty(this.state)
-        if(res && res.errCode === 0) {
-            toast.success('Create success!')
+        const { action } = this.state;
+        if (action === 'EDIT') {
+            let res = await updateSpecialtyService(this.state);
+            if (res && res.errCode === 0) {
+                toast.success('Update success!');
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    descriptionHTML: '',
+                    descriptionMarkdown: '',
+                });
+                await this.fetchSpecialty();
+            }
+            else {
+                toast.error('Error Update');
+            }
         }else{
-            toast.error('Error')
+            let res = await createNewSpecialty(this.state);
+            if (res && res.errCode === 0) {
+                toast.success('Create success!');
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    descriptionHTML: '',
+                    descriptionMarkdown: '',
+                });
+                await this.fetchSpecialty();
+            } else {
+                toast.error('Error');
+            }
         }
-        console.log("check", this.state)
+      
     }
 
-    handleEditUser = () => {
-
+    handleEditSpecialty = (item) => {
+        let imageBase64 = '';
+        if (item.image) {
+            imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+        }
+        this.setState({
+            name: item.name,
+            descriptionMarkdown: item.descriptionMarkdown,
+            descriptionHTML: item.descriptionHTML,
+            imageBase64: imageBase64,
+            action: 'EDIT',
+            specialtyId: item.id
+        });
     }
-    handleDeleteUser = () => {
-        
+    handleDeleteSpecialty = async (item) => {
+        let res = await deleteSpecialtyService(item.id);
+        if (res && res.errCode === 0) {
+            toast.success('Delete success!');
+            this.setState({
+                name: '',
+                imageBase64: '',
+                descriptionHTML: '',
+                descriptionMarkdown: '',
+            });
+            await this.fetchSpecialty();
+        }
     }
     render() {
         let {dataSpecialty} = this.state
@@ -128,10 +178,10 @@ class ManageSpecialty extends Component {
                                     <td>{item.name}</td>
                                     <td>
                                         <button className='btn-edit'
-                                        onClick={()=> this.handleEditUser(item)}
+                                        onClick={()=> this.handleEditSpecialty(item)}
                                         ><i className="fas fa-pencil-alt"></i></button>
                                         <button className='btn-delete'
-                                        onClick={()=> this.handleDeleteUser(item)}
+                                        onClick={()=> this.handleDeleteSpecialty(item)}
                                         ><i className="fas fa-trash"></i></button>
                                     </td> 
                                 </tr>

@@ -37,7 +37,6 @@ class Header extends Component {
             menuApp: menu
         })
 
-        console.log("check userinfor" , this.props.userInfo)
     }
 
     render() {

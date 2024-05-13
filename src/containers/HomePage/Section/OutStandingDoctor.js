@@ -66,10 +66,9 @@ class OutStandingDoctor extends Component {
                                 />
                             </div>
                             <div className='position text-center'>
-                                <div>
+                                <div className='name-outstanding-doctor'>
                                     {language === LANGUAGE.VI ? nameVi : nameEn }
                                 </div>
-                                <div>Cơ xương khớp1</div>
                             </div>
                         </div>
                     </div>

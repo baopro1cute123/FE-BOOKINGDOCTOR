@@ -20,27 +20,27 @@ class HandBook extends Component {
                         <Slider {...this.props.settings}>
                         <div className='section-customize'>
                             <div className='bg-image section-handbook' />
-                            <div >Cơ xương khớp 1</div>
+                            <div >5 Bác sĩ Tai mũi họng Nhi giỏi tại Hà Nội</div>
                         </div>
                         <div className='section-customize'>
                         <div className='bg-image section-handbook' />
-                            <div>Cơ xương khớp 2</div>
+                            <div>6 Bác sĩ khám chữa viêm amidan giỏi tại TP.HCM</div>
                         </div>
                         <div className='section-customize'>
                         <div className='bg-image section-handbook' />
-                            <div>Cơ xương khớp 3</div>
+                            <div>6 Địa chỉ chữa khám Tai Mũi Họng tại Quận Tân Phú uy tín</div>
                         </div>
                         <div className='section-customize'>
                         <div className='bg-image section-handbook' />
-                            <div>Cơ xương khớp 4</div>
+                            <div>Review chi tiết 5 bệnh viện, phòng khám Tai mũi họng Thủ Đức</div>
                         </div>
                         <div className='section-customize'>
                         <div className='bg-image section-handbook' />
-                            <div>Cơ xương khớp 5</div>
+                            <div>Tổng hợp 8 phòng khám chuyên khoa Tai Mũi Họng tốt tại Đà Nẵng</div>
                         </div>
                         <div className='section-customize'>
                         <div className='bg-image section-handbook' />
-                            <div>Cơ xương khớp 6</div>
+                            <div>Top 7 địa chỉ khám Tai Mũi Họng uy tín ở Hà Nội</div>
                         </div>
                         
                         </Slider>

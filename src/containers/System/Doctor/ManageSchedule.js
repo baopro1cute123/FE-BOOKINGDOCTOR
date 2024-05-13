@@ -24,11 +24,23 @@ class ManageSchedule extends Component {
             rangeTime : [],
         }
     }
-    componentDidMount () {
-        this.props.fetchAllDoctor()
-        this.props.fetchAllScheduleTime()
+    componentDidMount() {
+        this.props.fetchAllDoctor();
+        this.props.fetchAllScheduleTime();
+    
+        // Kiểm tra nếu đã đăng nhập và là bác sĩ
+        const { isLoggedIn, userInfo } = this.props;
+        if (isLoggedIn && userInfo.roleId === "R2") {
+            // Tìm bác sĩ trong danh sách và cập nhật state nếu tìm thấy
+            const { allDoctors } = this.props;
+            const doctor = allDoctors.find(doc => doc.id === userInfo.id);
+            if (doctor) {
+                this.setState({ selectedDoctor: { label: `${doctor.lastName} ${doctor.firstName}`, value: doctor.id } });
+            }
+        }
     }
     componentDidUpdate( prevProps,prevState,snapshot){
+        
         if(prevProps.allDoctors !== this.props.allDoctors){
             
             let dataSelect = this.buildDataInputSelect(this.props.allDoctors)
@@ -103,7 +115,6 @@ class ManageSchedule extends Component {
         // let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER)
         // let formatedDate = moment(currentDate).unix()
         let formatedDate = new Date(currentDate).getTime();
-        console.log("check formattedDate" , formatedDate)
         if(rangeTime && rangeTime.length > 0){
             let selectedTime = rangeTime.filter(item => item.isSelected === true)
             if(selectedTime && selectedTime.length > 0){
@@ -128,9 +139,12 @@ class ManageSchedule extends Component {
             toast.success("Save infor success!")
         }else{
             toast.error("error!")
-            console.log("check schedule", res)
 
         }
+
+        this.setState({
+            currentDate : '',
+        })
 
     }
     render() {
@@ -204,7 +218,8 @@ const mapStateToProps = state => {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
         allDoctors : state.admin.allDoctors,
-        allScheduleTime: state.admin.allScheduleTime
+        allScheduleTime: state.admin.allScheduleTime,
+        userInfo: state.user.userInfo
     };
 };
 

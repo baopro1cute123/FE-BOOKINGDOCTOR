@@ -19,7 +19,9 @@ import HomePage from './HomePage/HomePage';
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 
 import Doctor from '../routes/Doctor';
+import Chatbot from './Patient/Chat/Chatbot';
 import DetailClinic from './Patient/Clinic/DetailClinic';
+import Search from './Patient/Search/Search';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import verifyEmail from './Patient/verifyEmail';
 
@@ -60,8 +62,10 @@ class App extends Component {
                                 <Route path={path.DETAIL_DOCTOR} component={DetailDoctor}/>
                                 <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty}/>
                                 <Route path={path.DETAIL_CLINIC} component={DetailClinic}/>
-
                                 <Route path={path.VERIFY_EMAIL_BOOKING} component={verifyEmail}/>
+                                <Route path={path.SEARCH} component={Search}/>
+                                <Route path={path.CHATBOT} component={Chatbot}/>
+
 
                             </Switch>
                             </CustomScrollbars>

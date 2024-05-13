@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom/cjs/react-router-dom';
+import { Link, withRouter } from 'react-router-dom/cjs/react-router-dom';
 import logo from '../../assets/logo.jpeg';
 import { changeLanguageApp } from '../../store/actions/appActions';
 import { LANGUAGE } from '../../utils/constant';
@@ -66,7 +66,7 @@ class HomeHeader extends Component {
                     <div className='right-content'>
                         <div className='support'>
                         <i className="fas fa-question-circle"></i>
-                        <span><FormattedMessage id="homeheader.support"/></span>
+                        <span style={{fontSize: "14px", textTransform: "uppercase"}}><Link to='/chat'><FormattedMessage id="homeheader.support"/></Link></span>
                         </div>
                         <div className={language=== LANGUAGE.VI ? 'language-vi active': 'language-vi'}>
                         <span 
@@ -90,7 +90,7 @@ class HomeHeader extends Component {
                     </div>
                     <div className='search'>
                     <i className="fas fa-search"></i>
-                        <input type='text' placeholder='Tìm kiếm trên BookingDoctor' />
+                        <Link to='/search'><input type='text' placeholder='Tìm kiếm trên BookingDoctor' /></Link> 
                     </div>
                 </div>
                 <div className='content-down'>
