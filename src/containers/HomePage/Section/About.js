@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -11,7 +12,7 @@ class About extends Component {
         return (
             <div className='section-about section-share'>
                 <div className='section-about-header'>
-                    BÀI HÁT SỨC KHỎE GIA ĐÌNH
+                    <FormattedMessage id="homePage.song" />
                 </div>
                 <div className='section-about-content'>
                     <div className='content-left'>

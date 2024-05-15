@@ -24,6 +24,7 @@ import DetailClinic from './Patient/Clinic/DetailClinic';
 import Search from './Patient/Search/Search';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import verifyEmail from './Patient/verifyEmail';
+import DoneEmail from './Patient/DoneEmail';
 
 class App extends Component {
 
@@ -63,6 +64,8 @@ class App extends Component {
                                 <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty}/>
                                 <Route path={path.DETAIL_CLINIC} component={DetailClinic}/>
                                 <Route path={path.VERIFY_EMAIL_BOOKING} component={verifyEmail}/>
+                                <Route path={path.DONE_PAYMENT} component={DoneEmail}/>
+
                                 <Route path={path.SEARCH} component={Search}/>
                                 <Route path={path.CHATBOT} component={Chatbot}/>
 

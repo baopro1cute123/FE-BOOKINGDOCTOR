@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { getAllClinicService } from '../../../services/userService';
+import { FormattedMessage } from 'react-intl';
 
 class MedicalFacility extends Component {
     constructor(props) {
@@ -37,8 +38,11 @@ class MedicalFacility extends Component {
             <div className='section-medical-facility section-share'>
             <div className='section-container'>
                 <div className='speciatly-header'>
-                    <span className='title-section'>Cơ sở y tế nổi bật</span>
-                    <button className='btn-section'>Xem thêm</button>
+                    <span className='title-section'>
+                    <FormattedMessage id="homePage.specialty-outstanding" /></span>
+                    <button className='btn-section'>
+                    <FormattedMessage id="homePage.more-infor" />
+                    </button>
                 </div>
                 <div className='section-body'>
                 <Slider {...this.props.settings}>

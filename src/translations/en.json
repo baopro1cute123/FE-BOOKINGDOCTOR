@@ -68,7 +68,10 @@
     "homePage" : {
         "out-standing-doctor" : "Last week's featured doctor",
         "more-infor" : "More infor",
-        "speciality-poplular": "Popular specialty"
+        "speciality-poplular": "Popular specialty",
+        "specialty-outstanding": "Medical facility",
+        "Handbook" : "Handbook",
+        "song" : "FAMILY HEALTH SONG"
     },
     "manage-schedule" : {
         "title" : "Manage doctor's medical examination plans",

@@ -58,6 +58,10 @@ const getProfileDoctorById = (doctorId) => {
     return axios.get(`/api/get-profile-doctor-by-id?doctorId=${doctorId}`)
 }
 
+const getPriceDoctorById = (doctorId) => {
+    return axios.get(`/api/get-price-doctor-by-id?doctorId=${doctorId}`)
+}
+
 const postPatientBookAppoinment = (data) => {
     return axios.post(`/api/patient-book-appointment`, data)
 }
@@ -141,7 +145,15 @@ const ChatBotServices = (message) => {
     return axios.post(`/api/message`, message)
 }
 
-export { ChatBotServices, PostCancle, PostSendRemedy, createNewClinic, createNewSpecialty, createNewUserService, deleteClinicService, deleteSpecialtyService, deleteUserService, editUserService, getAllClinicService, getAllDoctorHomeService, getAllPatientBookingServices, getAllPatientByDoctorIdServices, getAllPatientForDoctor, getAllPatientServices, getAllSpecialtyService, getAllUsers, getAllcodeService, getDetailClinicByIdService, getDetailInforDoctor, getDetailSpecialtyByIdService, getExtraInforDoctorById, getProfileDoctorById, getScheduleDoctorByDate, getTopDoctorHomeService, handleLoginApi, postPatientBookAppoinment, postVerifyBookAppointment, saveBulkScheduleService, saveDetailDoctorService, updateClinicService, updateSpecialtyService };
+const PaymentMoMoService = (price, token, doctorId) => {
+    return axios.post(`/api/payment?price=${price}&token=${token}&doctorId=${doctorId}`)
+}
+
+const CheckPaymentMoMoService = (orderId) => {
+    return axios.post(`/api/check-status-payment?orderId=${orderId}`)
+}
+
+export { ChatBotServices, CheckPaymentMoMoService, PaymentMoMoService, PostCancle, PostSendRemedy, createNewClinic, createNewSpecialty, createNewUserService, deleteClinicService, deleteSpecialtyService, deleteUserService, editUserService, getAllClinicService, getAllDoctorHomeService, getAllPatientBookingServices, getAllPatientByDoctorIdServices, getAllPatientForDoctor, getAllPatientServices, getAllSpecialtyService, getAllUsers, getAllcodeService, getDetailClinicByIdService, getDetailInforDoctor, getDetailSpecialtyByIdService, getExtraInforDoctorById, getPriceDoctorById, getProfileDoctorById, getScheduleDoctorByDate, getTopDoctorHomeService, handleLoginApi, postPatientBookAppoinment, postVerifyBookAppointment, saveBulkScheduleService, saveDetailDoctorService, updateClinicService, updateSpecialtyService };
 
 
 

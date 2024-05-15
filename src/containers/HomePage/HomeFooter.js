@@ -6,13 +6,17 @@ class HomeFooter extends Component {
     render() {
         return (
             <div className='footer'>
+                    <div className='home-footer-up'>
+                        <p className='home-footer-p' style={{color: "white", fontSize: '20px', padding: "15px 0px"}}>BOOKING DOCTOR 2024</p>
+                    </div>
                 <div className='home-footer'>
+                    
                     <div className='home-footer-content'>
                         <span className="icon">&#128197;</span> {/* Biểu tượng Unicode */}
                         <span>HỆ THỐNG BOOKING DOCTOR</span>
-                        <p><span className="icon"></span> 54 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
-                        <p><span className="icon"></span> 0399 23 52 54</p>
-                        <p><span className="icon"></span> bookingdoctor@gmail.com</p>
+                        <p> 54 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
+                        <p> 0399 23 52 54</p>
+                        <p> bookingdoctor@gmail.com</p>
                     </div>
                     <div className='home-footer-content'>
                         <span className="icon">&#128196;</span> {/* Biểu tượng Unicode */}
@@ -26,11 +30,12 @@ class HomeFooter extends Component {
                         <span>LIÊN HỆ HỢP TÁC</span>
                         <p>Nguyễn Dương Gia Bảo</p>
                         <p>Hành Trung, Nghĩa Hành, Quảng Ngãi</p>
+                        <p>Đại học Bách Khoa - Đại học Đà Nẵng</p>
                     </div>
                 </div>
                 <div className='home-footer-up'>
-                    <p className='home-footer-p'>&copy; Chào mừng bạn đến với Nguyễn Dương Gia Bảo. <a target='_blank' href='https://www.facebook.com/giabao.nguyenduong.35/'>Welcome to Nguyễn Dương Gia Bảo</a></p>
-                    <div className='home-footer-container'>
+                <p className='home-footer-p'> <a target='_blank' rel='noopener noreferrer' href='https://www.facebook.com/giabao.nguyenduong.35/' style={{color: "white", fontSize: '20px'}}>&copy; Chào mừng bạn đến với Booking Doctor.</a></p>
+                    <div className='home-footer-container' style={{color: "white", fontSize: '20px'}} >
                         <i className="fab fa-facebook-square"></i>
                         <i className="fab fa-instagram"></i>
                         <i className="fab fa-youtube"></i>                 

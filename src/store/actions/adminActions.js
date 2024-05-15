@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { getAllSpecialtyService,createNewUserService, deleteUserService, editUserService, getAllDoctorHomeService, getAllUsers, getAllcodeService, getTopDoctorHomeService, saveDetailDoctorService, getAllClinicService } from "../../services/userService";
+import { getAllSpecialtyService,createNewUserService, deleteUserService, editUserService, getAllDoctorHomeService, getAllUsers, getAllcodeService, getTopDoctorHomeService, saveDetailDoctorService, getAllClinicService, PaymentMoMoService } from "../../services/userService";
 import actionTypes from './actionTypes';
 
 export const fetchGenderStart =() => {
@@ -317,6 +317,32 @@ export const fetchAllScheduleTime = () => {
 
             dispatch({
                 type: actionTypes.FETCH_ALLCODE_SCHEDULE_HOUR_FAILED
+            });
+            console.log("DoctorsFailed", e)
+        }
+    }
+}
+
+export const fetchPayMoMo = (price, doctorId, token) => {
+    return async(dispatch, getState) => {
+        try {
+            let res = await PaymentMoMoService(price, doctorId, token)
+            if(res && res.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_PAYMOMO_SUCCESS,
+                    data : res.data
+                });
+            }
+            else{
+                dispatch({
+                    type: actionTypes.FETCH_PAYMOMO_FAILED
+                });
+            }
+            
+        } catch (e) {
+
+            dispatch({
+                type: actionTypes.FETCH_PAYMOMO_FAILED
             });
             console.log("DoctorsFailed", e)
         }

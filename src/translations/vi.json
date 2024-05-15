@@ -67,9 +67,13 @@
         "edit" : "Lưu thay đổi"
     },
     "homePage" : {
-        "out-standing-doctor" : "Bác sĩ nổi bật tuần qua",
+        "out-standing-doctor" : "Bác sĩ",
         "more-infor" : "Xem thêm",
-        "speciality-poplular": "Chuyên khoa phổ biến"
+        "speciality-poplular": "Chuyên khoa phổ biến",
+        "specialty-outstanding": "Cơ sở y tế",
+        "Handbook" : "Cẩm nang",
+        "song": "BÀI HÁT SỨC KHỎE VỀ GIA ĐÌNH"
+
     },
     "manage-schedule" : {
         "title" : "Quản lý kế hoạch khám bệnh của bác sĩ",

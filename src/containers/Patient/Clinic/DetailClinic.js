@@ -35,7 +35,6 @@ class DetailClinic extends Component {
                         })
                     }
                 }
-
                 this.setState({
                     dataDetailClinic: res.data,
                     arrDoctorId: arrDoctorId,

@@ -9,8 +9,9 @@ const initialState = {
     topDoctors : [],
     allDoctors: [],
     allScheduleTime : [],
-
     allRequiredDoctorInfor: [],
+    payMoMo : []
+
 }
 
 const adminReducers = (state = initialState, action) => {
@@ -105,6 +106,16 @@ const adminReducers = (state = initialState, action) => {
                         }
         case actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAIED:
                         state.allRequiredDoctorInfor = []
+                        return {
+                            ...state,
+                        }
+        case actionTypes.FETCH_PAYMOMO_SUCCESS:
+                        state.payMoMo = action.data
+                        return {
+                            ...state,
+                        }
+        case actionTypes.FETCH_PAYMOMO_FAILED:
+                        state.payMoMo = []
                         return {
                             ...state,
                         }

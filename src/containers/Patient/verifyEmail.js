@@ -1,7 +1,8 @@
 import 'moment/locale/vi'; // Import locale vi
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { postVerifyBookAppointment } from '../../services/userService';
+import { CheckPaymentMoMoService, postVerifyBookAppointment } from '../../services/userService';
+import * as actions from '../../store/actions';
 import HomeHeader from '../HomePage/HomeHeader';
 import './verifyEmail.scss';
 
@@ -19,24 +20,32 @@ class verifyEmail extends Component {
             let urlParams = new URLSearchParams(this.props.location.search);
             let token = urlParams.get('token');
             let doctorId = urlParams.get('doctorId')
-            
+            let orderId = urlParams.get('orderId')
 
-            let res = await postVerifyBookAppointment({
-                token: token,
-                doctorId: doctorId
-                //date, timeType, cần truyền 2 cái này
-            })
-            if(res && res.errCode === 0) {
-                this.setState({
-                    statusVerify: true,
-                    errorCode : res.errCode
+
+            console.log(orderId)
+            let resStatus = await CheckPaymentMoMoService(orderId);
+
+            console.log(resStatus.data.resultCode)
+
+            if(resStatus.data.resultCode === 0) {
+                let res = await postVerifyBookAppointment({
+                    token: token,
+                    doctorId: doctorId
                 })
-            }else{
-                this.setState({
-                    statusVerify : true,
-                    errorCode: res.errCode ? res.errCode : -1
-                })
+                if(res && res.errCode === 0) {
+                    this.setState({
+                        statusVerify: true,
+                        errorCode : res.errCode
+                    })
+                }else{
+                    this.setState({
+                        statusVerify : true,
+                        errorCode: res.errCode ? res.errCode : -1
+                    })
+                }
             }
+            
         }
         
     }
@@ -77,12 +86,15 @@ class verifyEmail extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        payMoMo: state.admin.payMoMo
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        fetchPayMoMo: (price, doctorId, token)=> dispatch(actions.fetchPayMoMo(price, doctorId, token))
+
     };
 };
 
