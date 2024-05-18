@@ -41,12 +41,19 @@
             "history-patient": "Medical history",
             "history" : "Medical history",
             "manage-history" : "Manage medical history",
-            "manage-all-history" : "Manage medical appointments"
+            "manage-all-history" : "Manage medical appointments",
+            "manage-revenue": "Revenue management",
+            "revenue" : "BOOKING DOCTOR revenue",
+            "revenue-id": "DOCTORS revenue",
+            "revenue-admin": "Revenue ADMIN"
         },
         "doctor" : {
             "manage-schedule" : "Manage Doctor's schedule",
             "manage-patient" : "Manage Patient",
-            "history-patient" : "Manage History Patient"
+            "history-patient" : "Manage History Patient",
+            "manage-revenue" : "Revenue management"
+
+
 
         }
     },
@@ -78,6 +85,18 @@
         "choose-doctor" : "Choose Doctor",
         "choose-date" : "Choose Date",
         "save" : "Save"
+    },
+    
+    "doctor" : {
+        "manage-patient": "Manage Patient",
+        "no-patient" : "NO MEDICAL APPOINTMENTS!",
+        "manage-history" : "Manage History",
+        "revenue-doctor" : "Revenue Doctor ",
+        "start-date" : "Start date",
+        "end-date" : "End date",
+        "my-w" : "MY WALLET"
+
+
     },
     "patient" : {
         "detail-doctor" : {
@@ -128,7 +147,17 @@
             "address-clinic" : "Clinic address",
             "note" : "Note",
             "specialty": "Choose specialty",
-            "clinic": "Choose clinic"
+            "clinic": "Choose clinic",
+            "manage-clinic" : "Clinic management",
+            "photo-clinic" : "Photo clinic",
+            "manage-speciality" : "Manage speciality",
+            "photo-speciality" : "Photo speciality",
+            "name-speciality": "Name specialty",
+            "history" : "Management of medical history",
+            "all-schedule": "Manage all appointments",
+            "manage-revenue": "Booking Doctor revenue management",
+            "admin-revenue": "ADMIN revenue",
+            "doctor-revenue": "Doctor Revenue"
 
         }
     }

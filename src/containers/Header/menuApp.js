@@ -55,6 +55,21 @@ export const adminMenu = [
             }
         ]
     },
+    { //quản lý cẩm nang đỏi qua lịch sử khám bệnh
+        name: 'menu.admin.manage-revenue', 
+        menus: [
+            {
+                name: 'menu.admin.revenue', link: '/system/revenue'
+            },
+            {
+                name: 'menu.admin.revenue-id', link: '/system/revenue-id'
+            }
+            ,
+            {
+                name: 'menu.admin.revenue-admin', link: '/system/revenue-admin'
+            }
+        ]
+    },
 ];
 
 export const doctorMenu = [
@@ -82,6 +97,16 @@ export const doctorMenu = [
           
             {
                 name: 'menu.doctor.history-patient', link: '/doctor/history-patient'
+            }
+        ]
+
+},
+{
+    name: 'menu.admin.manage-revenue',
+    menus : [
+          
+            {
+                name: 'menu.doctor.manage-revenue', link: '/doctor/manage-revenue'
             }
         ]
 

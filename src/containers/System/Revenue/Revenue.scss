@@ -1,0 +1,66 @@
+.manage-revenue-container {
+    padding: 50px 100px;
+
+    .manage-revenue-title {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: red;
+        margin-bottom: 30px; /* Add margin bottom for spacing */
+    } 
+    .manage-revenue-price {
+        font-size: 18px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: blue;
+        margin-bottom: 30px; /* Add margin bottom for spacing */
+    } 
+
+    .date-picker-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px; /* Add margin bottom for spacing */
+        
+        .date-picker {
+
+            margin-right: 20px; /* Add margin right for spacing between date pickers */
+            label {
+                font-weight: 600;
+                font-size: 17px;
+                padding: 0 10px;
+
+            }
+        }
+    }
+
+    .revenue-chart {
+        margin-top: 50px; /* Add margin top for spacing between date pickers and chart */
+    }
+
+    .doctor-select {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+
+        label {
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s;
+            
+            &:hover,
+            &:focus {
+                border-color: #007bff;
+            }
+        }
+    }
+}

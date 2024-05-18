@@ -1,11 +1,12 @@
 import moment from 'moment';
 import 'moment/locale/vi'; // Import locale vi
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import LoadingOverlay from 'react-loading-overlay';
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
 import DatePicker from '../../../components/Input/DatePicker';
-import { PostCancle, PostSendRemedy, getAllPatientForDoctor } from '../../../services/userService';
+import { PostCancle, PostSendRemedy, getAllPatientForDoctor, getPriceDoctorById } from '../../../services/userService';
 import { LANGUAGE } from '../../../utils';
 import './ManagePatient.scss';
 import RemedyModal from './RemedyModal';
@@ -55,7 +56,10 @@ class ManagePatient extends Component {
             await this.getDataPatient()
         })
     }
-    handleConfirm = (item) => {
+    handleConfirm = async (item) => {
+
+        let price = await getPriceDoctorById(item.doctorId)
+
         let date = new Date(parseInt(item.date)).toLocaleDateString()
 
         let data = {
@@ -65,8 +69,10 @@ class ManagePatient extends Component {
             timeType: item.timeType,
             patientName : item.patientData.firstName,
             patientDate : item.date,
-            emailDate: date
+            emailDate: date,
+            totalAmount: price.data
         }
+        console.log(data)
         this.setState({
             isOpenRemedyModal: true,
             dataModal: data
@@ -74,6 +80,7 @@ class ManagePatient extends Component {
     }
     handleCancle = async (item) => {
         let date = new Date(parseInt(item.date)).toLocaleDateString()
+        let price = await getPriceDoctorById(item.doctorId)
 
         let res = await PostCancle({
             email:item.patientData.email,
@@ -82,7 +89,9 @@ class ManagePatient extends Component {
             timeType :item.timeType,
             language: this.props.language,
             patientName : item.patientData.firstName,
-            patientDate: date
+            patientDate: date ,
+            totalAmount: price.data
+
         })
         if(res && res.errCode === 0) {
             this.setState({
@@ -122,9 +131,11 @@ class ManagePatient extends Component {
             language: this.props.language,
             patientName : dataModal.patientName,
             patientDate: dataModal.patientDate,
-            emailDate : dataModal.emailDate
+            emailDate : dataModal.emailDate,
+            totalAmount: dataModal.totalAmount
             // thêm vào đây
         })
+        
         if(res && res.errCode === 0) {
             this.setState({
                 isShowLoading: false
@@ -151,11 +162,11 @@ class ManagePatient extends Component {
         >
                 <div className='manage-patient-container'>
                     <div className='m-p-title'>
-                        Quản lý bệnh nhân khám bệnh
+                    <FormattedMessage id="doctor.manage-patient"/>
                     </div>
                     <div className='manage-patient-body row'>
                         <div className='col-4 form-group'>
-                            <label>Chọn ngày khám</label>
+                            <label><FormattedMessage id="manage-schedule.choose-date"/></label>
                             <DatePicker
                                 className="form-control"
                                 onChange={this.handleOnChangeDatePicker}
@@ -208,7 +219,7 @@ class ManagePatient extends Component {
                         </div>
 
                         :
-                        <div className='no-data'>Không có lịch hẹn khám bệnh!</div>
+                        <div className='no-data'><FormattedMessage id="doctor.no-patient"/></div>
                         }
                     </div>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { getAllPatientBookingServices } from '../../../services/userService';
 import { LANGUAGE } from "../../../utils/constant";
@@ -34,7 +35,7 @@ class AllHistory extends Component {
             <>
                 <div className='manage-history-container'>
                     <div className='manage-history-title'>
-                        QUẢN LÝ TẤT CẢ LỊCH HẸN
+                    <FormattedMessage id="admin.manage-doctor.all-schedule"/>
                     </div>
                     <div className='manage-history-table'>
                         <table id="customers">

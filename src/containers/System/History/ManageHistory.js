@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { getAllPatientServices } from '../../../services/userService';
@@ -55,7 +56,7 @@ class ManageHistory extends Component {
             <>
                 <div className='manage-history-container'>
                     <div className='manage-history-title'>
-                        QUẢN LÝ LỊCH SỬ KHÁM BỆNH
+                        <FormattedMessage id="admin.manage-doctor.history"/>
                     </div>
                     <div className='manage-history-table'>
                         <table id="customers">

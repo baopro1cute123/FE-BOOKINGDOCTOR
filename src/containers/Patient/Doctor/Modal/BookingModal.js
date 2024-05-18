@@ -3,6 +3,7 @@ import moment from 'moment';
 import 'moment/locale/vi'; // Import locale vi
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import LoadingOverlay from 'react-loading-overlay';
 import { connect } from "react-redux";
 import Select from 'react-select';
 import { toast } from 'react-toastify';
@@ -13,7 +14,6 @@ import * as actions from '../../../../store/actions';
 import { LANGUAGE } from '../../../../utils';
 import ProfileDoctor from '../ProfileDoctor';
 import './BookingModal.scss';
-import LoadingOverlay from 'react-loading-overlay';
 class BookingModal extends Component {
     constructor(props) {
         super(props);
@@ -157,6 +157,7 @@ class BookingModal extends Component {
     }
     render() {
             let {isOpenModal, closeBookingModal, dataTime} = this.props
+            console.log("check", this.props)
             let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : ''
             return (
             <>

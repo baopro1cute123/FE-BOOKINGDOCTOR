@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { getAllPatientByDoctorIdServices } from '../../../services/userService';
@@ -58,7 +59,7 @@ class ManageHistory extends Component {
             <>
                 <div className='manage-history-container'>
                     <div className='manage-history-title'>
-                        QUẢN LÝ LỊCH SỬ KHÁM BỆNH
+                    <FormattedMessage id="doctor.manage-history"/>
                     </div>
                     {dataHistory && dataHistory.length > 0 ?
                     <div className='manage-history-table'>
@@ -93,7 +94,7 @@ class ManageHistory extends Component {
                     </div>
                                 :
                                 <div className='history-no-data'>
-                                    Không có lịch hẹn khám bệnh !
+                                <FormattedMessage id="doctor.no-patient"/>
                                 </div>
                 }
                 </div>

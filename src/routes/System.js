@@ -7,6 +7,9 @@ import UserRedux from '../containers/System/Admin/UserRedux';
 import ManageClinic from '../containers/System/Clinic/ManageClinic';
 import AllHistory from '../containers/System/History/AllHistory';
 import ManageHistory from '../containers/System/History/ManageHistory';
+import RerenueAdmin from '../containers/System/Revenue/RerenueAdmin';
+import Revenue from '../containers/System/Revenue/Revenue';
+import RevenueId from '../containers/System/Revenue/RevenueId';
 import ManageSpecialty from '../containers/System/Specialty/ManageSpecialty';
 import UserManage from '../containers/System/UserManage';
 
@@ -28,6 +31,10 @@ class System extends Component {
                         <Route path="/system/manage-clinic" component={ManageClinic} />
                         <Route path="/system/manage-history" component={ManageHistory} />
                         <Route path="/system/manage-all-history" component={AllHistory} />
+                        <Route path="/system/revenue" component={Revenue} />
+                        <Route path="/system/revenue-id" component={RevenueId} />
+                        <Route path="/system/revenue-admin" component={RerenueAdmin} />
+
                         <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                     </Switch>
                 </div>

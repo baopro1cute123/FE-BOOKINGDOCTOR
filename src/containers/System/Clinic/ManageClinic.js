@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it';
 import 'moment/locale/vi'; // Import locale vi
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import MdEditor from 'react-markdown-editor-lite';
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
@@ -133,24 +134,26 @@ class ManageClinic extends Component {
         return (
             <>
             <div className='manage-specialty-container'>
-                <div className='ms-title'>Quản lý phòng khám</div>
+                <div className='ms-title'>
+                    <FormattedMessage id="admin.manage-doctor.manage-clinic"/>
+                </div>
                 
                 <div className='add-new-all-specialty row'>
                     <div className='col-6 form-group'>
-                        <label>Tên phòng khám</label>
+                        <label><FormattedMessage id="admin.manage-doctor.name-clinic"/></label>
                         <input className='form-control' type='text' value={this.state.name} 
                             onChange={(event)=>this.handleOnChangeInput(event, 'name')}
                         />
                     </div>
                     
                     <div className='col-6 form-group'>
-                        <label>Ảnh phòng khám</label>
+                    <label><FormattedMessage id="admin.manage-doctor.photo-clinic"/></label>
                         <input className='form-control-file' type='file'
                             onChange={(event)=>this.handleOnchangeImg(event)}
                         />
                     </div>
                     <div className='col-6 form-group'>
-                    <label>Địa chỉ phòng khám</label>
+                    <label><FormattedMessage id="admin.manage-doctor.address-clinic"/></label>
                         <input className='form-control' type='text' value={this.state.address} 
                             onChange={(event)=>this.handleOnChangeInput(event, 'address')}
                         />
@@ -164,7 +167,7 @@ class ManageClinic extends Component {
                     <div className='col-12'>
                         <button className='btn-save-specialty'
                             onClick={()=> this.handleSaveClinic()}
-                        >Lưu</button>
+                        >                        <label><FormattedMessage id="admin.manage-doctor.save"/></label></button>
                     </div>
                     
                 </div>
