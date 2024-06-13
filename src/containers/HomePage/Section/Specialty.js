@@ -27,8 +27,14 @@ class Specialty extends Component {
     handleViewDetailDoctor = (item) => {
         this.props.history.push(`/detail-specialty/${item.id}`)
     }
+    handleMoreIf = () => {
+        if(this.props.history) {
+            this.props.history.push(`/search`)
+        }
+    }
     render() {
         let {dataSpecialty} = this.state
+        console.log(dataSpecialty)
         return (
             <div className='section-specialty section-share'>
                 <div className='section-container'>
@@ -36,8 +42,11 @@ class Specialty extends Component {
                         <span className='title-section'>
                             <FormattedMessage id="homePage.speciality-poplular"/>
                         </span>
-                        <button className='btn-section'>
-                        <FormattedMessage id="homePage.more-infor"/>
+                        <button className='btn-section'
+                        onClick={()=> this.handleMoreIf()}>
+                        <FormattedMessage id="homePage.more-infor"
+                            
+                        />
                         </button>
                     </div>
                     <div className='section-body'>

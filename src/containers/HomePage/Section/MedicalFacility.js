@@ -1,11 +1,11 @@
 import { Component, default as React } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { getAllClinicService } from '../../../services/userService';
-import { FormattedMessage } from 'react-intl';
 
 class MedicalFacility extends Component {
     constructor(props) {
@@ -30,6 +30,11 @@ class MedicalFacility extends Component {
 
         }
     }
+    handleMoreIf = () => {
+        if(this.props.history) {
+            this.props.history.push(`/search`)
+        }
+    }
  
     render() {
 
@@ -40,7 +45,8 @@ class MedicalFacility extends Component {
                 <div className='speciatly-header'>
                     <span className='title-section'>
                     <FormattedMessage id="homePage.specialty-outstanding" /></span>
-                    <button className='btn-section'>
+                    <button className='btn-section'
+                    onClick={()=> this.handleMoreIf()}>
                     <FormattedMessage id="homePage.more-infor" />
                     </button>
                 </div>

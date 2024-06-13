@@ -63,13 +63,13 @@ class ManageHistory extends Component {
                             <tbody>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên bệnh nhân</th>
-                                    <th>Bác sĩ khám</th>
+                                    <th><FormattedMessage id="table.name-patient"/></th>
+                                    <th><FormattedMessage id="table.doctor"/></th>
                                     <th>Email</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Bệnh lý</th>
-                                    <th>Ngày khám</th>
-                                    <th>Actions</th>
+                                    <th><FormattedMessage id="table.address"/></th>
+                                    <th><FormattedMessage id="table.pathological"/></th>
+                                    <th><FormattedMessage id="table.day"/></th>
+                                    <th><FormattedMessage id="table.action"/></th>
                                 </tr>
                                 {dataHistory && dataHistory.length > 0 &&
                                     dataHistory.map((item, index) => (

@@ -23,10 +23,7 @@ class verifyEmail extends Component {
             let orderId = urlParams.get('orderId')
 
 
-            console.log(orderId)
             let resStatus = await CheckPaymentMoMoService(orderId);
-
-            console.log(resStatus.data.resultCode)
 
             if(resStatus.data.resultCode === 0) {
                 let res = await postVerifyBookAppointment({

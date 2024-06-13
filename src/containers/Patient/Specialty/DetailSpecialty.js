@@ -9,32 +9,34 @@ import DoctorExtraifor from '../Doctor/DoctorExtraifor';
 import DoctorSchedule from '../Doctor/DoctorSchedule';
 import ProfileDoctor from '../Doctor/ProfileDoctor';
 import './DetailSpecialty.scss';
+
 class DetailSpecialty extends Component {
     constructor(props) {
         super(props);
         this.state = {
             arrDoctorId: [],
-           dataDetailSpecialty : {},
-           listProvince: []
+            dataDetailSpecialty: {},
+            listProvince: []
         }
     }
-    async componentDidMount () {
-        if(this.props.match && this.props.match.params && this.props.match.params.id){
+
+    async componentDidMount() {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
 
             let res = await getDetailSpecialtyByIdService({
-                id : id,
+                id: id,
                 location: 'ALL'
             })
 
             let resProvince = await getAllcodeService('PROVINCE')
 
-            if(res && res.errCode === 0 && resProvince && resProvince.errCode === 0) {
+            if (res && res.errCode === 0 && resProvince && resProvince.errCode === 0) {
                 let data = res.data
                 let arrDoctorId = []
-                if(data && !_.isEmpty(res.data)){
+                if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorSpecialty;
-                    if(arr && arr.length > 0 ){
+                    if (arr && arr.length > 0) {
                         arr.map(item => {
                             arrDoctorId.push(item.doctorId)
                         })
@@ -42,11 +44,11 @@ class DetailSpecialty extends Component {
                 }
 
                 let dataProvince = resProvince.data
-                if (dataProvince && dataProvince.length > 0){
+                if (dataProvince && dataProvince.length > 0) {
                     dataProvince.unshift({
                         createdAt: null,
                         keyMap: 'ALL',
-                        type : "PROVINCE",
+                        type: "PROVINCE",
                         valueEn: 'ALL',
                         valueVi: "Toàn quốc",
                     })
@@ -61,29 +63,28 @@ class DetailSpecialty extends Component {
         }
     }
 
-  
-    async componentDidUpdate( prevProps,prevState,snapshot){
-       if(this.props.language !== prevProps.language ){
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.language !== prevProps.language) {
+            // Handle language change if needed
         }
-        }
+    }
 
-  
-    handleOnChange = async (event) =>{ //hàm sort : dựa vào đây để viết hàm search
-        if(this.props.match && this.props.match.params && this.props.match.params.id){
+    handleOnChange = async (event) => {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
             let location = event.target.value
 
             let res = await getDetailSpecialtyByIdService({
-                id : id,
+                id: id,
                 location: location
             })
 
-            if(res && res.errCode === 0) {
+            if (res && res.errCode === 0) {
                 let data = res.data
                 let arrDoctorId = []
-                if(data && !_.isEmpty(res.data)){
+                if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorSpecialty;
-                    if(arr && arr.length > 0 ){
+                    if (arr && arr.length > 0) {
                         arr.map(item => {
                             arrDoctorId.push(item.doctorId)
                         })
@@ -92,86 +93,83 @@ class DetailSpecialty extends Component {
                 this.setState({
                     dataDetailSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
-                    
                 })
-        
+            }
         }
     }
-}
+
     render() {
-        let {arrDoctorId, dataDetailSpecialty,listProvince} = this.state
-        let {language}  = this.props
+        let { arrDoctorId, dataDetailSpecialty, listProvince } = this.state
+        let { language } = this.props
+        let imageBase64 = ''
+        if(dataDetailSpecialty.image){
+            imageBase64 = Buffer.from (dataDetailSpecialty.image, 'base64').toString('binary')}
+
+        // console.log(dataDetailSpecialty.image)
         return (
             <div className='detail-specialty-container'>
-            <HomeHeader/>
-            <div className='detail-specialty-body'>
-              
-                <div className='description-specialty'>
-                {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
-                        && 
-                        <div dangerouslySetInnerHTML={{__html: dataDetailSpecialty.descriptionHTML}}></div>  
-                }
-                </div>
-            
-            <div className='search-sp-doctor'>
-                <select onChange={(event)=> this.handleOnChange(event)}>
-                    {listProvince && listProvince.length > 0 &&
-                        
-                        listProvince.map((item,index)=>{
-                            return(
-                                <option key={index} value={item.keyMap}>
-                                    {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
-                                </option>
+               
+                <HomeHeader />
+                <div className='detail-specialty-body'>
+                    <div className='description-specialty'>
+                        {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty) &&
+                            <>
+                                <div className='name-clinic'>
+                                    {dataDetailSpecialty.name}
+                                </div>
+                                
+                                <div className='img-clinic' 
+                                    style={{backgroundImage: `url(${imageBase64})`}}
+                                />
+                                <div dangerouslySetInnerHTML={{ __html: dataDetailSpecialty.descriptionHTML }}></div>
+                            </>
+                        }
+                    </div>
 
-                            )
-                        })
-                    }
+                    <div className='search-sp-doctor'>
+                        <select onChange={(event) => this.handleOnChange(event)}>
+                            {listProvince && listProvince.length > 0 &&
+                                listProvince.map((item, index) => {
+                                    return (
+                                        <option key={index} value={item.keyMap}>
+                                            {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
+                                        </option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </div>
 
-                </select>
-            </div>
-
-                {arrDoctorId && arrDoctorId.length > 0 && 
-                    arrDoctorId.map((item, index) => {
-                        return(
-                                <>
-                                <div className='each-doctor' key={index}>
-
-                                    <div className='dt-content-left'  >
-                                    <div className='profile-doctor'>
-                                        <ProfileDoctor
-                                            doctorId = {item}
-                                            isShowDescriptionDoctor = {true}
-                                            isShowLinkDetail={true}
-                                            isShowPrice={false}
-
-                                        // dataTime = {dataTime} 
-                                        />
-                                    </div>
+                    {arrDoctorId && arrDoctorId.length > 0 &&
+                        arrDoctorId.map((item, index) => {
+                            return (
+                                <div className='each-doctor' key={item}>
+                                    <div className='dt-content-left'>
+                                        <div className='profile-doctor'>
+                                            <ProfileDoctor
+                                                doctorId={item}
+                                                isShowDescriptionDoctor={true}
+                                                isShowLinkDetail={true}
+                                                isShowPrice={false}
+                                            />
+                                        </div>
                                     </div>
                                     <div className='dt-content-right'>
                                         <div className='doctor-schedule'>
                                             <DoctorSchedule
-                                        detailIdFromParent={item}/>
+                                                detailIdFromParent={item} />
                                         </div>
                                         <div className='doctor-extra-infor'>
                                             <DoctorExtraifor
-                                        detailIdFromParent={item}/>
+                                                detailIdFromParent={item} />
                                         </div>
-
                                     </div>
                                 </div>
-                                </>
-                                    
-                                )
-                                
-                            })
-                        }
-                        
-                    </div>
-
-                        
+                            )
+                        })
+                    }
+                </div>
             </div>
-                
         );
     }
 }
@@ -183,8 +181,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailSpecialty);

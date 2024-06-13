@@ -46,8 +46,7 @@ class DetailDoctor extends Component {
 
         }
         let currentURL = +(process.env.REACT_APP_IS_LOCALHOST) === 1 ? "https://chatbox-bookingdoctor.onrender.com/" : window.location.href;
-
-
+        console.log(currentURL)
         return (
             <>
                 <HomeHeader isShowBanner ={false}/>
@@ -61,12 +60,21 @@ class DetailDoctor extends Component {
                     <div className='content-right'>
                         <div className='up'>
                         {language === LANGUAGE.VI ? nameVi : nameEn}
+                        
                         </div>
                         <div className='down'>
                             {detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.description
-                            && <span>
+                            && 
+                                <>
+                                <h6 style={{textTransform: "uppercase", fontWeight: "600"}}>
+                            {detailDoctor.Doctor_Infor.SpecialtyData.name}
+
+                            </h6>
+                                <span>
                                 {detailDoctor.Markdown.description}
                             </span>
+                           
+                            </>
                             }
                             <div className='like-share-plugin'>
                                 <LikeandShare

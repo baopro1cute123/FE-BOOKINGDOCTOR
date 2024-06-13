@@ -55,6 +55,7 @@
         }
     },
     "manage-user" : {
+        "user": "Quản lý người dùng" ,
         "add" : "Thêm mới người dùng",
         "email" : "Email",
         "password" : "mật khẩu",
@@ -151,6 +152,19 @@
 
             
         }
+    },
+    "table" : {
+        "firstName" : "Tên",
+        "lastName" : "Họ",
+        "address" : "Đại chỉ",
+        "role" : "Vai trò",
+        "action" : "Hoạt động",
+        "name-patient" : "Tên bệnh nhân",
+        "doctor" : "Tên bác sĩ",
+        "day" : "Ngày khám",
+        "time" : "khung giờ khám",
+        "pathological" : "Bệnh lý"
+
     }
     
 }

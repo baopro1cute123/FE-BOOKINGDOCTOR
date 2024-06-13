@@ -28,17 +28,25 @@ class OutStandingDoctor extends Component {
     handleViewDetailDoctor = (doctor) => {
         this.props.history.push(`/detail-doctor/${doctor.id}`)
     }
+    handleMoreIf = () => {
+        if(this.props.history) {
+            this.props.history.push(`/search`)
+        }
+    }
     render() {
         let arrDoctors = this.state.arrDoctors
         let {language} = this.props;
+        console.log(arrDoctors)
          return (
             <div className='section-outstanding-doctor section-share'>
             <div className='section-container'>
                 <div className='speciatly-header'>
-                    <span className='title-section'>
+                    <span className='title-section' style={{ color: "white" }}>
                         <FormattedMessage id="homePage.out-standing-doctor" />
                     </span>
-                    <button className='btn-section'>
+                    <button className='btn-section'
+                        onClick={()=> this.handleMoreIf()}
+                    >
                         <FormattedMessage id="homePage.more-infor" />
                     </button>
                 </div>
@@ -50,7 +58,7 @@ class OutStandingDoctor extends Component {
                      arrDoctors.map((item, index)=>{
                         let imageBase64 = ''
                         if(item.image){
-                            imageBase64 = new Buffer (item.image, 'base64').toString('binary')}
+                            imageBase64 = Buffer.from (item.image, 'base64').toString('binary')}
                         let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
                         let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
 

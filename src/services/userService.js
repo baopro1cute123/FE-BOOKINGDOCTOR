@@ -168,7 +168,12 @@ const getRevenueByUserId = (userId) => {
 
 }
 
-export { ChatBotServices, CheckPaymentMoMoService, PaymentMoMoService, PostCancle, PostSendRemedy, createNewClinic, createNewSpecialty, createNewUserService, deleteClinicService, deleteSpecialtyService, deleteUserService, editUserService, getAllClinicService, getAllDoctorHomeService, getAllPatientBookingServices, getAllPatientByDoctorIdServices, getAllPatientForDoctor, getAllPatientServices, getAllRevenue, getAllRevenueByUserId, getAllSpecialtyService, getAllUsers, getAllcodeService, getDetailClinicByIdService, getDetailInforDoctor, getDetailSpecialtyByIdService, getExtraInforDoctorById, getPriceDoctorById, getProfileDoctorById, getRevenueByUserId, getScheduleDoctorByDate, getTopDoctorHomeService, handleLoginApi, postPatientBookAppoinment, postVerifyBookAppointment, saveBulkScheduleService, saveDetailDoctorService, updateClinicService, updateSpecialtyService };
+const getCheckToken = (token) => {
+    return axios.get(`/api/check-booking?token=${token}`)
+
+}
+
+export { ChatBotServices, CheckPaymentMoMoService, PaymentMoMoService, PostCancle, PostSendRemedy, createNewClinic, createNewSpecialty, createNewUserService, deleteClinicService, deleteSpecialtyService, deleteUserService, editUserService, getAllClinicService, getAllDoctorHomeService, getAllPatientBookingServices, getAllPatientByDoctorIdServices, getAllPatientForDoctor, getAllPatientServices, getAllRevenue, getAllRevenueByUserId, getAllSpecialtyService, getAllUsers, getAllcodeService, getCheckToken, getDetailClinicByIdService, getDetailInforDoctor, getDetailSpecialtyByIdService, getExtraInforDoctorById, getPriceDoctorById, getProfileDoctorById, getRevenueByUserId, getScheduleDoctorByDate, getTopDoctorHomeService, handleLoginApi, postPatientBookAppoinment, postVerifyBookAppointment, saveBulkScheduleService, saveDetailDoctorService, updateClinicService, updateSpecialtyService };
 
 
 

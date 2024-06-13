@@ -92,7 +92,7 @@ class Chatbot extends Component {
     }
 
     render() {
-        const { message, response, error, chatHistory } = this.state;
+        const { message, error, chatHistory } = this.state;
         return (
             <>
                 <HomeHeader />
@@ -135,17 +135,17 @@ class Chatbot extends Component {
                                                 {item && item.image ?
                                                     <div className='bg-image section-chatbot'
                                                         onClick={()=>this.handleOnClickspecialty(item.id)} 
-                                                    style={{backgroundImage: `url(${new Buffer (item.image, 'base64').toString('binary')})`}}/>: ""
+                                                    style={{backgroundImage: `url(${Buffer.from (item.image, 'base64').toString('binary')})`}}/>: ""
                                                 }
                                                 {item && item.imgclinic ?
                                                     <div className='bg-image section-chatbot-clinic'
                                                         onClick={()=>this.handleOnClickClinic(item.id)} 
-                                                    style={{backgroundImage: `url(${new Buffer (item.imgclinic, 'base64').toString('binary')})`}}/>: ""
+                                                    style={{backgroundImage: `url(${Buffer.from (item.imgclinic, 'base64').toString('binary')})`}}/>: ""
                                                 }
                                                 {item && item.imgdoctor ?
                                                     <div className='bg-image section-chatbot-doctor'
                                                         onClick={()=>this.handleOnClickDoctor(item.id)} 
-                                                    style={{backgroundImage: `url(${new Buffer (item.imgdoctor, 'base64').toString('binary')})`}}/>: ""
+                                                    style={{backgroundImage: `url(${Buffer.from (item.imgdoctor, 'base64').toString('binary')})`}}/>: ""
                                                 }
 
                                             </div>

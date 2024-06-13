@@ -77,10 +77,10 @@ class Login extends Component {
                         <div className="col-12 text-login">ĐĂNG NHẬP</div>
                         <div className="col-12 form-group login-input">
                             <label>Tài khoản hoặc email:</label>
-                            <input type="text" 
+                            <input type="text"
                             value={this.state.username}
                             onChange={(event)=> this.handleOnChangeUser(event)}
-                            className="form-control" placeholder="Username"/>
+                            className="form-control input-login" placeholder="Username"/>
                         </div>
                         <div className="col-12 form-group login-input">
                             <label>Mật khẩu:</label>
@@ -88,8 +88,8 @@ class Login extends Component {
                                 <input type={this.state.isShowPassword ? 'text' : 'password'}
                                 value={this.state.password} 
                                 onChange={(event)=> this.handleOnChangePassWord(event)}
-                                className="form-control" placeholder="Password"
-                                onKeyDown={(event)=>this.handleKeyDown(event)}    
+                                className="form-control input-login" placeholder="Password"
+                                onKeyDown={(event)=>this.handleKeyDown(event)}
                                 />
                                 <span
                                 onClick={()=> {this.handleShowHidePassword()}}>
@@ -101,16 +101,16 @@ class Login extends Component {
                             {this.state.errMessage}
                         </div>
                         <div className="col-12">
-                        <button className="btn-login"
-                        onClick={()=>{this.handleLogin()}}
-                        >Login</button>
+                            <button className="btn-login"
+                            onClick={()=>{this.handleLogin()}}
+                            >ĐĂNG NHẬP</button>
 
                         </div>
                         <div className="col-12">
                             <span className="forgot-password">Quên mật khẩu?</span>
                         </div>
                         <div className="col-12 text-center mt-3">
-                            <span className="text-other-login">Đăng nhập bằng:</span>
+                            <span className="text-other-login" style={{fontWeight: "600"}}>Đăng nhập bằng:</span>
                         </div>
                         <div className="col-12 social-login">
                         <i className="fab fa-google-plus-g google"></i>

@@ -34,13 +34,19 @@
 .section-share{
 
     &.section-specialty{
-        background-color: #5fbdf4;
+        // background-color: #5fbdf4;
 
     }
 
     &.section-outstanding-doctor
     {
-        background-color: #5fbdf4;
+        // background-color: #5fbdf4;
+        background-image: url(../../assets/1.jpg);
+        height: 400px !important;
+        filter: brightness(1);
+        // backdrop-filter: blur(30px);
+        // background: transparent;
+
 
     }
     &.section-about{
@@ -98,16 +104,19 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
+                    border: 2px solid #e5e7eb;
+
                 }
                 &.section-medical-facility{
                     width: 300px;
-                    height: 150px;
+                    height: 135px;
                     // background-image: url(../../assets/MedicalFacility/MedicalFacility.jpg);
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: #eee;
-
+                    border: 2px solid #e5e7eb;
+                    border-radius: 7%;
 
                 }
                 &.section-outstanding-doctor{
@@ -130,6 +139,7 @@
                     background-size: cover;
                     background-color: #eee;
                     padding-left: 5px;
+                    
                 }
             }
 
@@ -161,8 +171,10 @@
                 border: none;
                 outline: none;
                 display: block;
-                background: #ebebeb;
-                color: black;
+                background: white;
+                color: #5fbdf4;
+                border: 2px solid #5fbdf4;
+                font-size: 600;
                 cursor: pointer;
                 text-transform: uppercase;
                 &:hover{
@@ -189,8 +201,9 @@
         padding: 5px;
         .customize-border{
             padding: 20px;
-            border: 1px solid blue;
-            background-color: white;
+            // border: 1px solid blue;
+            // background-color: white;
+            color: white;
         }
         .position {
 

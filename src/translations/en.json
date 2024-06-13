@@ -58,6 +58,7 @@
         }
     },
     "manage-user" : {
+        "user": "Manage User" ,
         "add" : "Add new user",
         "email" : "Email",
         "password" : "password",
@@ -88,7 +89,7 @@
     },
     
     "doctor" : {
-        "manage-patient": "Manage Patient",
+        "manage-patients": "Manage Patient",
         "no-patient" : "NO MEDICAL APPOINTMENTS!",
         "manage-history" : "Manage History",
         "revenue-doctor" : "Revenue Doctor ",
@@ -160,7 +161,21 @@
             "doctor-revenue": "Doctor Revenue"
 
         }
-    }
+    },
+    "table" : {
+        "firstName" : "FirstName",
+        "lastName" : "LastName",
+        "address" : "Address",
+        "role" : "Role",
+        "action" : "Actions",
+        "name-patient" : "Name Patient",
+        "doctor" : "Name Doctor",
+        "day": "Day",
+        "time" : "Time",
+        "pathological" : "Pathological"
+
+
+}
     
 
 }

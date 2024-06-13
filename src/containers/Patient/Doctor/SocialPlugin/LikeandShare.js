@@ -49,7 +49,7 @@ class LikeandShare extends Component {
         let {dataHref} = this.props
         return (
             <>
-                <div class="fb-like"
+                <div className="fb-like"
                 data-href={dataHref} 
                 data-width=""
                 data-layout="standard"

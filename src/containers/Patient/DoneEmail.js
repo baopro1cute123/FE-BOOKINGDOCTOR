@@ -1,14 +1,17 @@
 import 'moment/locale/vi'; // Import locale vi
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getPriceDoctorById } from '../../services/userService';
+import { getCheckToken, getPriceDoctorById } from '../../services/userService';
 import * as actions from '../../store/actions';
+import HomeHeader from '../HomePage/HomeHeader';
 import './verifyEmail.scss';
 
 class VerifyEmail extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            statusVerify: false,
+        };
     }
 
     async componentDidMount() {
@@ -17,10 +20,18 @@ class VerifyEmail extends Component {
             let token = urlParams.get('token');
             let doctorId = urlParams.get('doctorId');
 
-            let priceResponse = await getPriceDoctorById(doctorId);
-            let price = priceResponse.data;
-    
-            this.props.fetchPayMoMo(price, doctorId, token);
+            let res = await getCheckToken(token)
+
+            if(res && res.errCode === 0){
+                this.setState({
+                    statusVerify: true,
+                })
+            }else{
+                let priceResponse = await getPriceDoctorById(doctorId);
+                let price = priceResponse.data;
+                this.props.fetchPayMoMo(price, doctorId, token);
+            }
+            
         }
     }
 
@@ -32,7 +43,6 @@ class VerifyEmail extends Component {
                 let urlParams = new URLSearchParams(this.props.location.search);
                 let token = urlParams.get('token');
                 let doctorId = urlParams.get('doctorId');
-                let redirectUrl = `${process.env.REACT_APP_FRONTEND_URL}/verify-booking?token=${token}&doctorId=${doctorId}`;
     
                 // Kiểm tra nếu cả token và doctorId đều có giá trị
                 if (token && doctorId) {
@@ -46,8 +56,19 @@ class VerifyEmail extends Component {
     }
 
     render() {
+        let {statusVerify} = this.state
         return (
-            <></>
+            <>
+                <HomeHeader/>
+                
+                <div className='verify-container'>
+            {statusVerify === true ?
+                <div className='infor-booking'>LỊCH HẸN KHÔNG TỒN TẠI HOẶC ĐÃ ĐƯỢC XÁC NHẬN </div>:
+                <div className='infor-booking'>TIẾN HÀNH THANH TOÁN</div>
+                    
+            }
+            </div>
+            </>
         );
     }
 }

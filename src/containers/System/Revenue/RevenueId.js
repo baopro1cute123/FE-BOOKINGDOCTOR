@@ -76,7 +76,6 @@ class Revenue extends Component {
         let formatedstartDate = new Date(startDate).getTime();
         let formatedendDate = new Date(endDate).getTime();
 
-        console.log(selectedDoctor)
         // Thực hiện lấy doanh thu cho bác sĩ đã chọn
         const res = await getAllRevenueByUserId(formatedstartDate, formatedendDate, selectedDoctor);
         if (res.errCode === 0) {

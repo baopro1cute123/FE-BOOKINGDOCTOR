@@ -72,7 +72,7 @@ class ManageSpecialty extends Component {
         if (action === 'EDIT') {
             let res = await updateSpecialtyService(this.state);
             if (res && res.errCode === 0) {
-                toast.success('Update success!');
+                toast.success('Cập nhật thành công!');
                 this.setState({
                     name: '',
                     imageBase64: '',
@@ -82,12 +82,12 @@ class ManageSpecialty extends Component {
                 await this.fetchSpecialty();
             }
             else {
-                toast.error('Error Update');
+                toast.error('Cập nhật thất bại !');
             }
         }else{
             let res = await createNewSpecialty(this.state);
             if (res && res.errCode === 0) {
-                toast.success('Create success!');
+                toast.success('Tạo mới thành công !');
                 this.setState({
                     name: '',
                     imageBase64: '',
@@ -96,7 +96,7 @@ class ManageSpecialty extends Component {
                 });
                 await this.fetchSpecialty();
             } else {
-                toast.error('Error');
+                toast.error('Tạo mới thất bại !');
             }
         }
       
@@ -105,7 +105,7 @@ class ManageSpecialty extends Component {
     handleEditSpecialty = (item) => {
         let imageBase64 = '';
         if (item.image) {
-            imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+            imageBase64 = Buffer.from(item.image, 'base64').toString('binary');
         }
         this.setState({
             name: item.name,
@@ -119,7 +119,7 @@ class ManageSpecialty extends Component {
     handleDeleteSpecialty = async (item) => {
         let res = await deleteSpecialtyService(item.id);
         if (res && res.errCode === 0) {
-            toast.success('Delete success!');
+            toast.success('Xóa thành công !');
             this.setState({
                 name: '',
                 imageBase64: '',
@@ -150,7 +150,7 @@ class ManageSpecialty extends Component {
                         />
                     </div>
                     <div className='col-12'>
-                        <MdEditor style={{ height: '300px' }} renderHTML={text => mdParser.render(text)} 
+                        <MdEditor style={{ height: '400px' }} renderHTML={text => mdParser.render(text)} 
                             onChange={this.handleEditorChange} 
                             value={this.state.descriptionMarkdown}
                         />
@@ -168,8 +168,8 @@ class ManageSpecialty extends Component {
 
                     <tr>
                         <th>STT</th>
-                        <th>Tên chuyên khoa</th>
-                        <th>Actions</th>
+                        <th><FormattedMessage id="admin.manage-doctor.name-speciality"/></th>
+                        <th><FormattedMessage id="table.action"/></th>
                     </tr>
                     {dataSpecialty && dataSpecialty.length &&
                         dataSpecialty.map((item, index)=>{

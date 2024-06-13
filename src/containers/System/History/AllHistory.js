@@ -42,12 +42,12 @@ class AllHistory extends Component {
                             <tbody>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên bệnh nhân</th>
+                                    <th><FormattedMessage id="table.name-patient"/></th>
                                     <th>Email</th>
-                                    <th>Bác sĩ khám</th>
-                                    <th>Khung giờ</th>
-                                    <th>Ngày khám</th>
-                                    <th>Trạng thái</th>
+                                    <th><FormattedMessage id="table.doctor"/></th>
+                                    <th><FormattedMessage id="table.time"/></th>
+                                    <th><FormattedMessage id="table.day"/></th>
+                                    <th><FormattedMessage id="table.action"/></th>
                                 </tr>
                                 {dataHistory && dataHistory.length > 0 &&
                                     dataHistory.map((item, index) => (

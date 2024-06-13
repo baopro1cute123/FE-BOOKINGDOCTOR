@@ -72,7 +72,6 @@ class ManagePatient extends Component {
             emailDate: date,
             totalAmount: price.data
         }
-        console.log(data)
         this.setState({
             isOpenRemedyModal: true,
             dataModal: data
@@ -97,14 +96,14 @@ class ManagePatient extends Component {
             this.setState({
                 isShowLoading: false
             })
-            toast.success("Send success!")
+            toast.success("Hủy lịch hẹn thành công !")
             this.closeRemedyModal()
             await this.getDataPatient()
         }else{
             this.setState({
                 isShowLoading: true
             })
-            toast.error("Error !")
+            toast.error("Hủy lịch thất bại !")
         }
 
     }
@@ -140,14 +139,14 @@ class ManagePatient extends Component {
             this.setState({
                 isShowLoading: false
             })
-            toast.success("Send success!")
+            toast.success("Gửi thành công !")
             this.closeRemedyModal()
             await this.getDataPatient()
         }else{
             this.setState({
                 isShowLoading: true
             })
-            toast.error("Error !")
+            toast.error("Gửi thất bại !")
         }
     }
     render() {
@@ -162,7 +161,7 @@ class ManagePatient extends Component {
         >
                 <div className='manage-patient-container'>
                     <div className='m-p-title'>
-                    <FormattedMessage id="doctor.manage-patient"/>
+                    <FormattedMessage id="doctor.manage-patients"/>
                     </div>
                     <div className='manage-patient-body row'>
                         <div className='col-4 form-group'>

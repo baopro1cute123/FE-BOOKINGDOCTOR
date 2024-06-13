@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import 'react-markdown-editor-lite/lib/index.css';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
@@ -43,11 +44,11 @@ class TableManageUser extends Component {
 
                     <tr>
                         <th>Email</th>
-                        <th>FirstName</th>
-                        <th>LastName</th>
-                        <th>Role</th>
-                        <th>Address</th>
-                        <th>Actions</th>
+                        <th><FormattedMessage id="table.firstName"/></th>
+                        <th><FormattedMessage id="table.lastName"/></th>
+                        <th><FormattedMessage id="table.role"/></th>
+                        <th><FormattedMessage id="table.address"/></th>
+                        <th><FormattedMessage id="table.action"/></th>
 
                     </tr>
                     {arrUsers && arrUsers.length &&

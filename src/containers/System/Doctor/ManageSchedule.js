@@ -105,11 +105,11 @@ class ManageSchedule extends Component {
         let {rangeTime , selectedDoctor , currentDate} = this.state ;
         let result = [];
         if(!currentDate){
-            toast.error("Invalid date!")
+            toast.error("Vui lòng chọn ngày !")
             return
         }
         if(selectedDoctor && _.isEmpty(selectedDoctor)){
-            toast.error("Invalid SelectedDoctor!")
+            toast.error("Vui lòng chọn bác sĩ !")
             return
         }
         // let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER)
@@ -126,7 +126,7 @@ class ManageSchedule extends Component {
                     result.push(object)
                 })
             }else{
-                toast.error("Invalid Selected Time!")
+                toast.error("Thời gian chọn không hợp lệ!")
                 return
             }
         }
@@ -135,10 +135,11 @@ class ManageSchedule extends Component {
             doctorId : selectedDoctor.value,
             date : formatedDate,
         })
+        console.log("res", result, selectedDoctor.value, formatedDate)
         if(res && res.errCode === 0) {
-            toast.success("Save infor success!")
+            toast.success("Lưu thành công !")
         }else{
-            toast.error("error!")
+            toast.error("Lưu thất bại !")
 
         }
 

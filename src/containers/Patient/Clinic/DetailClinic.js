@@ -51,6 +51,10 @@ class DetailClinic extends Component {
 
     render() {
         let {arrDoctorId, dataDetailClinic} = this.state
+        let imageBase64 = ''
+        if(dataDetailClinic.image){
+            imageBase64 = Buffer.from (dataDetailClinic.image, 'base64').toString('binary')}
+        console.log(dataDetailClinic.image)
         return (
             <div className='detail-specialty-container'>
             <HomeHeader/>
@@ -63,7 +67,11 @@ class DetailClinic extends Component {
                         <div className='name-clinic'>
                             {dataDetailClinic.name}
                         </div>
-                        <div dangerouslySetInnerHTML={{__html: dataDetailClinic.descriptionHTML}}></div>  
+                          
+                        <div className='img-clinic' 
+                                    style={{backgroundImage: `url(${imageBase64})`}}
+                                />
+                        <div dangerouslySetInnerHTML={{__html: dataDetailClinic.descriptionHTML}}></div>
                         
                         </>
                 }

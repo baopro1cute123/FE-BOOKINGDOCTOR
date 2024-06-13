@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { getAllSpecialtyService,createNewUserService, deleteUserService, editUserService, getAllDoctorHomeService, getAllUsers, getAllcodeService, getTopDoctorHomeService, saveDetailDoctorService, getAllClinicService, PaymentMoMoService } from "../../services/userService";
+import { PaymentMoMoService, createNewUserService, deleteUserService, editUserService, getAllClinicService, getAllDoctorHomeService, getAllSpecialtyService, getAllUsers, getAllcodeService, getTopDoctorHomeService, saveDetailDoctorService } from "../../services/userService";
 import actionTypes from './actionTypes';
 
 export const fetchGenderStart =() => {
@@ -101,7 +101,7 @@ export const createNewUser = (data) => {
         try {
             let res = await createNewUserService(data);
             if(res && res.errCode === 0){
-                toast.success("Create a new user success!")
+                toast.success("Tạo mới người dùng thành công !")
                 dispatch(saveUserSuccess());
                 dispatch(fetchAllUserStart()) ;
             }
@@ -161,17 +161,17 @@ export const deleteAUser = (userId) => {
         try {
             let res = await deleteUserService(userId.id);
             if(res && res.errCode === 0){
-                toast.success("Delete user success!")
+                toast.success("Xóa người dùng thành công !")
                 dispatch(deleteUserSuccess());
                 dispatch(fetchAllUserStart()) ;
             }
             else{
-                toast.error("Delete user error!")
+                toast.error("Xóa người dùng thất bại !")
                 dispatch(deleteUserFailed());
             }
             
         } catch (e) {
-            toast.error("Fetch all user error!")
+            toast.error("Danh sách người dùng thất bại")
 
             dispatch(deleteUserFailed());
             console.log("saveUserFailed", e)
@@ -192,17 +192,17 @@ export const editAUser = (data) => {
         try {
             let res = await editUserService(data);
             if(res && res.errCode === 0){
-                toast.success("Update user success!")
+                toast.success("Cập nhật người dùng thành công !")
                 dispatch(EditUserSuccess());
                 dispatch(fetchAllUserStart()) ;
             }
             else{
-                toast.error("Update user error!")
+                toast.error("Cập nhật người dùng thất bại!")
                 dispatch(EditUserFailed());
             }
             
         } catch (e) {
-            toast.error("Update all user error!")
+            toast.error("Cập nhật tất cả người dùng thất bại!")
 
             dispatch(EditUserFailed());
             console.log("saveUserFailed", e)
@@ -273,21 +273,21 @@ export const saveDetailDoctor = (data) => {
         try {
             let res = await saveDetailDoctorService(data)
             if(res && res.errCode === 0){
-                toast.success("Save success")
+                toast.success("Lưu thành công !")
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
                     data : res.data
                 });
             }
             else{
-                toast.error("Error")
+                toast.error("Lưu thất bại !")
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED
                 });
             }
             
         } catch (e) {
-            toast.error("Error")
+            toast.error("Thất bại")
             dispatch({
                 type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED
             });

@@ -31,12 +31,18 @@
             }
         }
     }
+    .search-title{
+        font-size: 20px;
+        font-weight: 600;
+        padding: 30px 0px;
+        text-transform: uppercase;
+    }
 
     .search-body {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Sắp xếp các mục theo lưới
-        grid-gap: 100px; // Khoảng cách giữa các mục
-        margin-top: 50px;
+        grid-gap: 30px; // Khoảng cách giữa các mục
+        margin-top: 20px;
 
         .search-body-child {
             .img-search {
@@ -61,6 +67,77 @@
 
             .name-search {
                 text-align: center;
+                margin-top: 10px; // Khoảng cách giữa hình ảnh và tên chuyên khoa
+                font-size: 18px; // Kích thước phông chữ của tên chuyên khoa
+                font-weight: bold; // Độ đậm của phông chữ
+                color: #333; // Màu văn bản của tên chuyên khoa
+            }
+        }
+    }
+    .search-body-doctor{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Sắp xếp các mục theo lưới
+        grid-gap: 30px; // Khoảng cách giữa các mục
+        margin-top: 20px;
+        .search-body-child-doctor {
+            .img-search-doctor {
+                width: 100%;
+                height: 150px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #eee;
+                border-radius: 10px; 
+
+                &.section-doctor {
+                    width: 200px;
+                    height: 180px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eeeeee;
+                }
+            }
+
+            .name-search-doctor {
+                text-align: center;
+                margin-top: 10px; // Khoảng cách giữa hình ảnh và tên chuyên khoa
+                font-size: 18px; // Kích thước phông chữ của tên chuyên khoa
+                font-weight: bold; // Độ đậm của phông chữ
+                color: #333; // Màu văn bản của tên chuyên khoa
+            }
+        }
+        
+        
+    }
+    .search-body-clinic {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Sắp xếp các mục theo lưới
+        grid-gap: 100px; // Khoảng cách giữa các mục
+        margin-top: 20px;
+
+        .search-body-child-clinic {
+            .img-search-clinic {
+                width: 100%;
+                height: 150px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #eee;
+                border-radius: 10px; // Độ cong của góc hình ảnh
+
+                &.section-clinic {
+                    width: 300px;
+                    height: 100px;
+                    // background-image: url(../../assets/specialty/coxuongkhop.jpg);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: #eeeeee;
+                }
+            }
+
+            .name-search-clinic {
                 margin-top: 10px; // Khoảng cách giữa hình ảnh và tên chuyên khoa
                 font-size: 18px; // Kích thước phông chữ của tên chuyên khoa
                 font-weight: bold; // Độ đậm của phông chữ

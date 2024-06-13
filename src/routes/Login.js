@@ -1,14 +1,14 @@
+import { push } from "connected-react-router";
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { push } from "connected-react-router";
 
 import * as actions from "../store/actions";
 import { KeyCodeUtils, LanguageUtils } from "../utils";
 
-import userIcon from '../../src/assets/images/user.svg';
-import passIcon from '../../src/assets/images/pass.svg';
-import './Login.scss';
 import { FormattedMessage } from 'react-intl';
+import passIcon from '../../src/assets/images/pass.svg';
+import userIcon from '../../src/assets/images/user.svg';
+import './Login.scss';
 
 import adminService from '../services/adminService';
 
@@ -49,9 +49,8 @@ class Login extends Component {
     }
 
     processLogin = () => {
-        const { username, password } = this.state;
 
-        const { adminLoginSuccess, adminLoginFail } = this.props;
+        const { adminLoginSuccess } = this.props;
         let loginBody = {
             username: 'admin',
             password: '123456'

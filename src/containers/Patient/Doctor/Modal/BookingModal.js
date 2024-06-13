@@ -121,10 +121,10 @@ class BookingModal extends Component {
         })
 
         if(res && res.errCode === 0) {
-            toast.success('Booking a new appointment success')
+            toast.success('Đặt lịch hẹn thành công')
             this.props.closeBookingModal()
         }else{
-            toast.error('Booking error!')
+            toast.error('Đặt lịch hẹn thất bại!')
         }
     }
     
@@ -157,7 +157,6 @@ class BookingModal extends Component {
     }
     render() {
             let {isOpenModal, closeBookingModal, dataTime} = this.props
-            console.log("check", this.props)
             let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : ''
             return (
             <>
@@ -259,7 +258,9 @@ class BookingModal extends Component {
                                     <Select
                                         value={this.state.selectedGender}
                                         onChange={this.handleChangeSelect}
-                                        options={this.state.genders}/>
+                                        options={this.state.genders}
+                                        placeholder = {<FormattedMessage id='patient.booking-modal.gender'/>}
+                                        />
                             </div>
                             </div>
                         </div>

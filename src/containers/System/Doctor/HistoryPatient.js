@@ -119,8 +119,7 @@ class ManageHistory extends Component {
                                 <p> <span>Ngày khám:</span> {new Date(parseInt(selectedPatient.date)).toLocaleDateString()}</p>
                                 <p><span>Bệnh lý:</span> {selectedPatient.description}</p>
                                 <p> <span>Toa thuốc:</span></p>
-                                <div className='bg-image section-history' style={{backgroundImage: `url(${imageBase64})`}}>
-                                
+                                <div className='bg-image section-history' style={{backgroundImage: `url(${imageBase64})`, width: "100%"}}>
                                 </div>
                             </div>
                         )}
